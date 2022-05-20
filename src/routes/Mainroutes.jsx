@@ -50,18 +50,18 @@ const MainRoutes = () => {
       id: 7,
     },
     {
+      link: "/admin",
+      element: <AdminPage />,
+      id: 8,
+    },
+    {
       link: "*",
       element: <NotFoundPage />,
-      id: 8,
+      id: 9,
     },
   ];
 
   const PRIVATE_ROUTES = [
-    {
-      link: "/admin",
-      element: <AdminPage />,
-      id: 1,
-    },
     {
       link: "/edit/:id",
       element: <EditCoursePage />,
