@@ -86,22 +86,22 @@ export default function Navbar() {
           </Search> */}
           <Box sx={{ width: '100%', px: 9, display: {xs:'none', md: 'flex'}, justifyContent: 'center'}}>
 
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             Новости
             </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             Консультация
             </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             О нас
             </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             Связаться с нами
             </Link>
