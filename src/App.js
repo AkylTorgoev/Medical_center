@@ -1,12 +1,16 @@
 import Navbar from "./components/Navbar/Navbar";
+import ProductContextProvider from "./context/ProductContextProvider";
 import MainRoutes from "./routes/Mainroutes";
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <ProductContextProvider>
+
       <Navbar />
       <MainRoutes />
-    </div>
+      </ProductContextProvider>
+    </>
   );
 }
 
