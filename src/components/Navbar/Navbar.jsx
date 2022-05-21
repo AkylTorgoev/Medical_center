@@ -66,12 +66,12 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
 
   return (
-    <Box mb={2} sx={{ flexGrow: 1}}>
-      <AppBar position="static" sx={{bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0'}}>
-        <Toolbar sx={{display: 'flex', justifyContent: 'space-around'}}>
+    <Box mb={2} sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
           <Box>
             <img id='logo' src={logo} alt="logo" />
           </Box>
@@ -84,27 +84,27 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search> */}
-          <Box sx={{ width: '100%', px: 9, display: {xs:'none', md: 'flex'}, justifyContent: 'center'}}>
+          <Box sx={{ width: '100%', px: 9, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
 
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            Новости
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/'>
+                Новости
+              </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            Консультация
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/courses'>
+                Консультация
+              </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            О нас
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/about'>
+                О нас
+              </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            Связаться с нами
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/contacts'>
+                Связаться с нами
+              </Link>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
@@ -123,7 +123,7 @@ export default function Navbar() {
                 <NotificationsIcon sx={{fontSize: '30px'}}/>
               </Badge>
             </IconButton> */}
-            
+
 
 
 
@@ -135,7 +135,7 @@ export default function Navbar() {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
             >
-              <AccountCircle sx={{fontSize: '35px'}}/>
+              <AccountCircle sx={{ fontSize: '35px' }} />
             </IconButton>
           </Box>
           {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -151,62 +151,62 @@ export default function Navbar() {
             </IconButton>
           </Box> */}
           <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
-        <MenuItem>
-          <Avatar /> Profile
-        </MenuItem>
-        
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu>
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: 'visible',
+                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                mt: 1.5,
+                '& .MuiAvatar-root': {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                '&:before': {
+                  content: '""',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  bgcolor: 'background.paper',
+                  transform: 'translateY(-50%) rotate(45deg)',
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <MenuItem>
+              <Avatar /> Profile
+            </MenuItem>
+
+            <Divider />
+            <MenuItem>
+              <ListItemIcon>
+                <PersonAdd fontSize="small" />
+              </ListItemIcon>
+              Add another account
+            </MenuItem>
+
+            <MenuItem>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
-      
+
     </Box>
   );
 }

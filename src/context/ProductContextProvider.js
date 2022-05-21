@@ -88,7 +88,7 @@ const reducer = (state = INIT_STATE, action) => {
         }
 
         const deleteProduct = async (id) => {
-            await axios.delete(`${API}/${id}`)
+            await axios.delete(`${API}/${id}/`)
             getProducts()
           }
         
@@ -99,17 +99,17 @@ const reducer = (state = INIT_STATE, action) => {
                 headers: {'Content-Type':'multipart/form-data'}
               }
 
-            let newNewProduct = new FormData()
-              newNewProduct.append('name', newProduct.name)
-              newNewProduct.append('direction', newProduct.direction)
-              newNewProduct.append('speciality', newProduct.speciality)
-              newNewProduct.append('ranks', newProduct.ranks)
-              newNewProduct.append('description', newProduct.description)
+            let newEditProduct = new FormData()
+              newEditProduct.append('name', newProduct.name)
+              newEditProduct.append('direction', newProduct.direction)
+              newEditProduct.append('speciality', newProduct.speciality)
+              newEditProduct.append('ranks', newProduct.ranks)
+              newEditProduct.append('description', newProduct.description)
 
-            await axios.patch(`${API}/${newProduct.id}/`, newNewProduct, config);
+            await axios.patch(`${API}/${newProduct.id}/`, newEditProduct, config);
             getProducts()
+          };
         
-          }
 
 
         return <productContext.Provider 
