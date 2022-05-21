@@ -84,24 +84,24 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search> */}
-          <Box sx={{width: '100%', px: 9, display: {xs:'none', md: 'flex'}, justifyContent: 'space-around'}}>
+          <Box sx={{ width: '100%', px: 9, display: {xs:'none', md: 'flex'}, justifyContent: 'center'}}>
 
-            <Button sx={{color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             Новости
             </Link>
             </Button>
-            <Button sx={{color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             Консультация
             </Link>
             </Button>
-            <Button sx={{color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             О нас
             </Link>
             </Button>
-            <Button sx={{color: 'black'}} variant='text'>
+            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: {lg:'16px', xl: '21px'},  px: 3, color: 'black'}} variant='text'>
             <Link to='/'>
             Связаться с нами
             </Link>
@@ -188,9 +188,7 @@ export default function Navbar() {
         <MenuItem>
           <Avatar /> Profile
         </MenuItem>
-        <MenuItem>
-          <Avatar /> My account
-        </MenuItem>
+        
         <Divider />
         <MenuItem>
           <ListItemIcon>
@@ -198,12 +196,7 @@ export default function Navbar() {
           </ListItemIcon>
           Add another account
         </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
+        
         <MenuItem>
           <ListItemIcon>
             <Logout fontSize="small" />
