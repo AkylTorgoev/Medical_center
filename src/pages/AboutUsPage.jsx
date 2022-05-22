@@ -1,9 +1,9 @@
 import React from "react";
 
 const AboutUsPage = () => {
-  return <div>
-    
-  </div>;
+  return (<div>
+    12345
+  </div>);
 };
 
 export default AboutUsPage;

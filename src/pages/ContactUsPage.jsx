@@ -1,7 +1,9 @@
 import React from "react";
 
 const ContactUsPage = () => {
-  return <div></div>;
+  return (<div>
+    54321
+  </div>);
 };
 
 export default ContactUsPage;

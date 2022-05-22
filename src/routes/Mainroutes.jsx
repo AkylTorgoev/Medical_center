@@ -55,18 +55,18 @@ const MainRoutes = () => {
       id: 8,
     },
     {
+      link: "/edit/:id",
+      element: <EditCoursePage />,
+      id: 9,
+    },
+    {
       link: "*",
       element: <NotFoundPage />,
-      id: 9,
+      id: 10,
     },
   ];
 
   const PRIVATE_ROUTES = [
-    {
-      link: "/edit/:id",
-      element: <EditCoursePage />,
-      id: 2,
-    },
   ];
 
   return (
