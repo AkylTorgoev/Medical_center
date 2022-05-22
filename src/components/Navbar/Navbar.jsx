@@ -14,8 +14,9 @@ import Logout from '@mui/icons-material/Logout';
 import { AppBar, Button, Paper, Toolbar } from '@mui/material';
 import { AccountCircle, LogoDev } from '@mui/icons-material';
 import logo from './logo.png';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { width } from '@mui/system';
+import { useAuth } from '../../context/AuthContextProvider';
 
 // const Search = styled('div')(({ theme }) => ({
 //   position: 'relative',
@@ -67,6 +68,15 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   
+  const { user, checkAuth, logout } = useAuth();
+
+  React.useEffect(() => {
+    if (localStorage.getItem('token')) {
+      checkAuth();
+    }
+  }, []);
+
+  const navigate = useNavigate();
 
   return (
     <Box mb={2} sx={{ flexGrow: 1}}>
@@ -127,29 +137,30 @@ export default function Navbar() {
 
 
 
-            <IconButton
+          <IconButton
               onClick={handleClick}
               size="small"
               sx={{ ml: 2 }}
               aria-controls={open ? 'account-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
-            >
+              >
               <AccountCircle sx={{fontSize: '35px'}}/>
             </IconButton>
           </Box>
           {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
+            size="large"
+            aria-label="show more"
+            aria-controls={mobileMenuId}
+            aria-haspopup="true"
+            onClick={handleMobileMenuOpen}
+            color="inherit"
             >
-              <MoreIcon sx={{fontSize: '30px'}}/>
+            <MoreIcon sx={{fontSize: '30px'}}/>
             </IconButton>
           </Box> */}
+          {user ? (
           <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -203,7 +214,21 @@ export default function Navbar() {
           </ListItemIcon>
           Logout
         </MenuItem>
-      </Menu>
+      </Menu>) : (
+            <>
+              <NavLink to="/login">
+                <Button color="inherit" sx={{ color: 'white' }}>
+                  Login
+                </Button>
+              </NavLink>
+
+              <NavLink to="/register">
+                <Button color="inherit" sx={{ color: 'white' }}>
+                  Register
+                </Button>
+              </NavLink>
+            </>
+          )}
         </Toolbar>
       </AppBar>
       
