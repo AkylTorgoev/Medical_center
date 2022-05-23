@@ -234,7 +234,7 @@ export default function Navbar() {
       ) : (
         <>
               <NavLink to="/login">
-                <Button sx={{mr: 2, px: 2}}>
+                <Button  sx={{mr: 2, px: 2, color:'#3a2c2cs'}}>
                   Login
                 </Button>
               </NavLink>
