@@ -1,11 +1,14 @@
 import { Button, FormControl, FormHelperText, Input, InputLabel, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContextProvider';
 
 const Activation = () => {
     const { activation } = useAuth();
     const [ code, setCode ] = useState()
+
+
 
     const handleInp = (e) => {
          const code = e.target.value;

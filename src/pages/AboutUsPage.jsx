@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const AboutUsPage = () => {
-  return (<div>
-    12345
-  </div>);
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default AboutUsPage;

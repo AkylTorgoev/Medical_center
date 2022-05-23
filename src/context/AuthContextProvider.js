@@ -41,7 +41,7 @@ const AuthContextProvider = ({ children }) => {
       };
       let formData = new FormData();
       formData.append('activation_code', str);
-
+      navigate('/login')
     try{
         const res = await axios.post(
         `${AUTH_API}/activation`,
