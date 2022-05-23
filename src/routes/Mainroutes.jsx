@@ -1,8 +1,10 @@
 import React from "react";
 import { Navigate, Route, Routes, useRoutes } from "react-router-dom";
+import Activation from "../components/auth/Activation";
+import Login from "../components/auth/Login";
+import Registration from "../components/auth/Registration";
 import AboutUsPage from "../pages/AboutUsPage";
 import AdminPage from "../pages/AdminPage";
-import AuthPage from "../pages/AuthPage";
 import ContactUsPage from "../pages/ContactUsPage";
 import CourseDetailsPage from "../pages/CourseDetailsPage";
 import CoursesPage from "../pages/CoursesPage";
@@ -20,49 +22,59 @@ const MainRoutes = () => {
       id: 1,
     },
     {
-      link: "/auth",
-      element: <AuthPage />,
+      link: "/register",
+      element: <Registration />,
       id: 2,
+    },
+    {
+      link: "/activation",
+      element: <Activation />,
+      id: 3,
+    },
+    {
+      link: "/login",
+      element: <Login />,
+      id: 4,
     },
     {
       link: "/about",
       element: <AboutUsPage />,
-      id: 3,
+      id: 5,
     },
     {
       link: "/courses",
       element: <CoursesPage />,
-      id: 4,
+      id: 6,
     },
     {
       link: "/courses/:id",
       element: <CourseDetailsPage />,
-      id: 5,
+      id: 7,
     },
     {
       link: "/contacts",
       element: <ContactUsPage />,
-      id: 6,
+      id: 8,
     },
     {
       link: "/payment",
       element: <PaymentPage />,
-      id: 7,
+      id: 9,
     },
     {
       link: "/admin",
       element: <AdminPage />,
-      id: 8,
+      id: 10,
     },
     {
       link: "/edit/:id",
       element: <EditCoursePage />,
-      id: 9,
+      id: 11,
     },
     {
       link: "*",
       element: <NotFoundPage />,
-      id: 10,
+      id: 12,
     },
   ];
 
