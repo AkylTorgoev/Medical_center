@@ -17,12 +17,11 @@ export default function ProductCard({ item }) {
     const { deleteProduct } = useProducts();
     // const { addProductToCart, checkProductInCart } = useCart()
 
-
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, justifyContent: 'center' }}>
             <CardMedia
                 component="img"
-                height="140"
+                height="400"
                 image={item.image}
                 alt={item.name}
             />

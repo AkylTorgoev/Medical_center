@@ -23,7 +23,6 @@ const EditProduct = () => {
     }, []);
 
 
-    console.log(product);
 
 
     const handleInp = (e) => {
@@ -45,6 +44,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='name'
                     size="small"
+                    value={product.name || ''}
                     onChange={handleInp}
                 />
                 <TextField
@@ -55,20 +55,11 @@ const EditProduct = () => {
                     variant="outlined"
                     name='image'
                     size="small"
+                    value={product.image || ''}
 
                     onChange={handleInp}
                 />
-                <TextField
-                    sx={{ marginBottom: '10px', borderColor: 'black' }}
-                    fullWidth
-                    id="outlined-basic"
-                    label="Direction"
-                    variant="outlined"
-                    name='direction'
-                    size="small"
 
-                    onChange={handleInp}
-                />
                 <TextField
 
                     sx={{ marginBottom: '10px', borderColor: 'black', backgroundColor: 'whitesmoke' }}
@@ -78,6 +69,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='speciality'
                     size="small"
+                    value={product.speciality || ''}
 
                     onChange={handleInp}
                 />
@@ -90,6 +82,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='ranks'
                     size="small"
+                    value={product.ranks || ''}
 
                     onChange={handleInp}
                 />
@@ -103,6 +96,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='description'
                     size="small"
+                    value={product.description || ''}
 
                     onChange={handleInp}
                 />

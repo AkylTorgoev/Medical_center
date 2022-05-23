@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useState } from 'react';
 import axios from 'axios';
 import { ACTIONS, API } from '../helpers/const';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -35,20 +35,24 @@ const reducer = (state = INIT_STATE, action) => {
                 const location = useLocation()
                 const navigate = useNavigate()
 
-
+                const [page, setPage] = useState(1)
                 const [state, dispatch] = useReducer(reducer, INIT_STATE)
-                
-                const getDoctors = async () => { const { data } = await axios(`${API}/`);
-                return data.result
-            }
+
+                const [count, setCount] = useState(1)
+                // console.log(page, count)
+               
                 const getProducts = async () => {
-                    const { data } = await axios(`${API}/`)
+                    // let doc=location.pathname
+                    // let url=`${doc}?page=${page}`
+                    // navigate(url)
+                    // console.log(page);
+                    const { data } = await axios(`${API}/?page=${page}`)
+                    setCount(Math.ceil(data.count / 3))
                     dispatch({
                         type: ACTIONS.GET_PRODUCTS,
-                        payload: data.results
+                        payload: data
                     }
                     )
-                    console.log(data.results)
                 };
 
 
@@ -59,8 +63,9 @@ const reducer = (state = INIT_STATE, action) => {
             const { data } = await axios(`${API}/${id}/`);
             dispatch({
                 type: ACTIONS.GET_PRODUCT_DETAILS,
-                payload: data.results
+                payload: data
             });
+
         };
 
 
@@ -78,9 +83,7 @@ const reducer = (state = INIT_STATE, action) => {
               newNewProduct.append('ranks', newProduct.ranks)
               newNewProduct.append('description', newProduct.description)
 
-             let ta = newNewProduct.get('ranks')
-                 
-             console.log(ta);
+             
 
             await axios.post(`${API}/`, newNewProduct, config)
             getProducts()
@@ -101,26 +104,61 @@ const reducer = (state = INIT_STATE, action) => {
 
             let newEditProduct = new FormData()
               newEditProduct.append('name', newProduct.name)
-              newEditProduct.append('direction', newProduct.direction)
               newEditProduct.append('speciality', newProduct.speciality)
               newEditProduct.append('ranks', newProduct.ranks)
               newEditProduct.append('description', newProduct.description)
-
-            await axios.patch(`${API}/${newProduct.id}/`, newEditProduct, config);
+              newEditProduct.append('id', newProduct.id)
+              let id = newEditProduct.get('id')
+              console.log(id);
+              
+              
+            await axios.patch(`${API}/${id}/`, newEditProduct, config);
             getProducts()
           };
         
+
+          const fetchByParams = async(query, value)=>{
+            if(value==='all'){
+              getProducts()
+            }else{
+                
+              const { data } = await axios(`${API}filter/?${query}=${value}`)
+            
+              dispatch({
+                type: ACTIONS.GET_PRODUCTS,
+                payload: data
+              })
+            }
+              }
+            
+              const searchFilter = async(value)=>{
+              
+                const { data } = await axios(`${API}search/?q=${value}`)
+              
+                dispatch({
+                  type: ACTIONS.GET_PRODUCTS,
+                  payload: data
+                })
+                
+            
+              }
+          
 
 
         return <productContext.Provider 
         value={{
                 products: state.products,
+                productDetails: state.productDetails,
                 addProduct,
                 getProducts,
                 getProductDetails,
                 saveEditedProduct,
                 deleteProduct,
-                getDoctors,
+                setPage,
+                page,
+                count,
+                fetchByParams,
+                searchFilter
 
 
 

@@ -24,11 +24,11 @@ const ProductDetails = () => {
                         style={{ maxWidth: '100%' }}
                     />
                 </Grid>
-                <Grid item xs={6}>
-                    <Typography variant="h3">{productDetails.name}</Typography>
-                    <Typography variant="subtitle1">{productDetails.direction}</Typography>
-                    <Typography variant="caption">{productDetails.speciality}</Typography>
-                    <Typography variant="caption">{productDetails.ranks}</Typography>
+                <Grid item xs={6} display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+                    <Typography variant="h5">{productDetails.name}</Typography>
+                    <Typography variant="h5">{productDetails.direction}</Typography>
+                    <Typography variant="h5">{productDetails.speciality}</Typography>
+                    <Typography variant="h6">{productDetails.ranks}</Typography>
                     <Typography variant="caption">
                         {productDetails.description}
                     </Typography>
