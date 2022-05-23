@@ -78,13 +78,15 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
+  console.log(user);
+
   return (
-    <Box mb={2} sx={{ flexGrow: 1}}>
-      <AppBar position="static" sx={{bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0'}}>
-        <Toolbar sx={{display: 'flex', justifyContent: 'space-around'}}>
-          <Box>
+    <Box mb={2} sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
+          <Link to='/'>
             <img id='logo' src={logo} alt="logo" />
-          </Box>
+          </Link>
           {/* <Search sx={{border: '1px solid'}}>
             <SearchIconWrapper>
               <SearchIcon />
@@ -94,46 +96,48 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search> */}
-          <Box sx={{ width: '100%', px: 9, display: {xs:'none', md: 'flex'}, justifyContent: 'center'}}>
+          <Box sx={{ width: '100%', px: 9, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
 
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            Новости
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/'>
+                Новости
+              </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            Консультация
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/courses'>
+                Консультация
+              </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            О нас
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/about'>
+                О нас
+              </Link>
             </Button>
-            <Button sx={{fontFamily: 'Source Sans Pro', fontSize: { xl: '19px'},  px: 3, color: 'black'}} variant='text'>
-            <Link to='/'>
-            Связаться с нами
-            </Link>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+              <Link to='/contacts'>
+                Связаться с нами
+              </Link>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
+            {user ? (
+          <>
           <Box>
             {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={3} color="error">
-                <MailIcon sx={{fontSize: '30px'}}/>
+              <MailIcon sx={{fontSize: '30px'}}/>
               </Badge>
-            </IconButton>
+              </IconButton>
             <IconButton
-              size="large"
+            size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+            <Badge badgeContent={17} color="error">
                 <NotificationsIcon sx={{fontSize: '30px'}}/>
-              </Badge>
-            </IconButton> */}
-            
+                </Badge>
+              </IconButton> */}
+
 
 
 
@@ -160,9 +164,8 @@ export default function Navbar() {
             <MoreIcon sx={{fontSize: '30px'}}/>
             </IconButton>
           </Box> */}
-          {user ? (
-          <Menu
-        anchorEl={anchorEl}
+            <Menu
+            anchorEl={anchorEl}
         id="account-menu"
         open={open}
         onClose={handleClose}
@@ -195,35 +198,49 @@ export default function Navbar() {
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
+        >
         <MenuItem>
+        
+
           <Avatar /> Profile
+        
         </MenuItem>
         
         <Divider />
         <MenuItem>
+        
+
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
+        
         </MenuItem>
         
-        <MenuItem>
+        <MenuItem onClick={() => {
+                logout();
+                navigate('/login');
+              }}>
+        
+
           <ListItemIcon>
             <Logout fontSize="small" />
-          </ListItemIcon>
+          </ListItemIcon >
           Logout
+        
         </MenuItem>
-      </Menu>) : (
-            <>
+      </Menu>
+        </>
+      ) : (
+        <>
               <NavLink to="/login">
-                <Button color="inherit" sx={{ color: 'white' }}>
+                <Button sx={{mr: 2, px: 2}}>
                   Login
                 </Button>
               </NavLink>
 
               <NavLink to="/register">
-                <Button color="inherit" sx={{ color: 'white' }}>
+                <Button  variant="outlined" color="inherit">
                   Register
                 </Button>
               </NavLink>
@@ -231,7 +248,7 @@ export default function Navbar() {
           )}
         </Toolbar>
       </AppBar>
-      
+
     </Box>
   );
 }

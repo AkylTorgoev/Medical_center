@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { authContext, useAuth } from '../contexts/AuthContextProvider';
+import { useAuth } from '../../context/AuthContextProvider';
 
 function Copyright(props) {
   return (
@@ -34,7 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Registration() {
+export default function Login() {
   //   const handleSubmit = (event) => {
   //     event.preventDefault();
   //     const data = new FormData(event.currentTarget);
@@ -46,12 +46,11 @@ export default function Registration() {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const { register, error } = useAuth();
+  const { login, error } = useAuth();
 
-  function handleRegister(email, password) {
-    register({ email, password });
+  function handleLogin(email, password) {
+    login(email, password);
   }
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -68,7 +67,7 @@ export default function Registration() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Registration
+            LOGIN
           </Typography>
           <Box
             // component="form"
@@ -76,7 +75,6 @@ export default function Registration() {
             noValidate
             sx={{ mt: 1 }}
           >
-            {error ? <Typography>{error}</Typography> : null}
             <TextField
               margin="normal"
               required
@@ -110,9 +108,9 @@ export default function Registration() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => handleRegister(email, password)}
+              onClick={() => handleLogin(email, password)}
             >
-              Register
+              Login
             </Button>
             <Grid container>
               <Grid item xs>

@@ -12,7 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { authContext, useAuth } from '../contexts/AuthContextProvider';
+import { useAuth } from '../../context/AuthContextProvider';
+import { useNavigate } from 'react-router-dom';
+import { Navigation } from '@mui/icons-material';
 
 function Copyright(props) {
   return (
@@ -34,23 +36,25 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Login() {
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     const data = new FormData(event.currentTarget);
-  //     console.log({
-  //       email: data.get('email'),
-  //       password: data.get('password'),
-  //     });
-  //   };
+export default function Registration() {
+    const navigate = useNavigate()
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      console.log({
+        email: data.get('email'),
+        password: data.get('password'),
+      });
+    };
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const { login, error } = useAuth();
+  const { register, error } = useAuth();
 
-  function handleLogin(email, password) {
-    login(email, password);
+  function handleRegister(email, password) {
+    register({ email, password });
   }
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -67,7 +71,7 @@ export default function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            LOGIN
+            Registration
           </Typography>
           <Box
             // component="form"
@@ -75,6 +79,7 @@ export default function Login() {
             noValidate
             sx={{ mt: 1 }}
           >
+            {error ? <Typography>{error}</Typography> : null}
             <TextField
               margin="normal"
               required
@@ -108,9 +113,9 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => handleLogin(email, password)}
+              onClick={() => {handleRegister(email, password); navigate('/activation')}}
             >
-              Login
+              Register
             </Button>
             <Grid container>
               <Grid item xs>
