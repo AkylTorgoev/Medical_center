@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, Input, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProducts } from '../../context/ProductContextProvider';
@@ -30,9 +30,15 @@ const EditProduct = () => {
         let obj = {
             ...product,
             [e.target.name]: e.target.value,
+            'image': e.target.files,
         };
         setProduct(obj);
     };
+
+    // const handleInpFile = (e) => {
+    //     let file = e.target.files[0];
+    //     setProduct({...product, image: file})
+    // }
     return (
         <div>
 
@@ -47,24 +53,26 @@ const EditProduct = () => {
                     size="small"
                     onChange={handleInp}
                 />
-                <TextField
-                    sx={{ marginBottom: '10px', borderColor: 'black' }}
-                    fullWidth
-                    id="outlined-basic"
-                    label="Image"
-                    variant="outlined"
-                    name='image'
-                    size="small"
+                {/* <Box sx={{display: 'flex'}}>
 
-                    onChange={handleInp}
+                <input
+                type='file'
+                sx={{ marginBottom: '10px', borderColor: 'black' }}
+                fullWidth
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                onChange={handleInpFile}
+                
                 />
+                 <Button variant='outlined' >Отпрвить</Button> 
+                </Box> */}
                 <TextField
                     sx={{ marginBottom: '10px', borderColor: 'black' }}
                     fullWidth
                     id="outlined-basic"
                     label="Direction"
                     variant="outlined"
-                    name='direction'
                     size="small"
 
                     onChange={handleInp}

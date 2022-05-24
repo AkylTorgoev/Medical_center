@@ -48,7 +48,7 @@ const reducer = (state = INIT_STATE, action) => {
                         payload: data.results
                     }
                     )
-                    console.log(data.results)
+                    console.log(data)
                 };
 
 
@@ -79,6 +79,9 @@ const reducer = (state = INIT_STATE, action) => {
               newNewProduct.append('description', newProduct.description)
 
              let ta = newNewProduct.get('ranks')
+
+            //  let image = new FormData()
+            //  image.append('image', newProduct.image)
                  
              console.log(ta);
 
@@ -101,6 +104,7 @@ const reducer = (state = INIT_STATE, action) => {
 
             let newEditProduct = new FormData()
               newEditProduct.append('name', newProduct.name)
+            //   newEditProduct.append('image', newProduct.image)
               newEditProduct.append('direction', newProduct.direction)
               newEditProduct.append('speciality', newProduct.speciality)
               newEditProduct.append('ranks', newProduct.ranks)
