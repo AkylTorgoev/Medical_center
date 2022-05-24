@@ -24,25 +24,26 @@ export default function ProductCard({ item }) {
                 height="400"
                 image={item.image}
                 alt={item.name}
+                onClick={() => navigate(`/courses/${item.id}`)}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {item.name}
                 </Typography>
 
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'green', fontWeight: '700' }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
                     {item.direction}
                 </Typography>
 
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'green', fontWeight: '700' }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
                     {item.speciality}
                 </Typography>
 
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'green', fontWeight: '700' }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
                     {item.ranks}
                 </Typography>
 
-                <Typography
+                {/* <Typography
                     variant="body2"
                     color="text.secondary"
                     onClick={() => navigate(`/courses/${item.id}`)}
@@ -55,7 +56,7 @@ export default function ProductCard({ item }) {
                     }}
                 >
                     {item.description}
-                </Typography>
+                </Typography> */}
             </CardContent>
             <CardActions>
                 <Button size="small" onClick={() => deleteProduct(item.id)}>

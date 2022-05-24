@@ -68,7 +68,7 @@ const ProductList = () => {
             </Box>
             {products ? (
                 <Box sx={{
-                    textAlign: 'center', height: "1000px"
+                    textAlign: 'center'
                 }}>
 
                     <Typography>Page: {page}</Typography>
