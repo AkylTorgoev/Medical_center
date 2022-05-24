@@ -16,6 +16,7 @@ export default function ProductCard({ item }) {
 
     const { deleteProduct } = useProducts();
     // const { addProductToCart, checkProductInCart } = useCart()
+    console.log(item.image);
 
     return (
         <Card sx={{ maxWidth: 345, justifyContent: 'center' }}>
