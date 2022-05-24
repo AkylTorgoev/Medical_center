@@ -5,4 +5,6 @@ export const ACTIONS = {
 
 export const API = 'http://34.88.61.26/api/v1/doctors';
 
-export const ADMIN = 'admin@gmail.com'
+export const AUTH_API = 'http://34.88.61.26/api/v1/account';
+
+export const ADMIN = 'admin@admin.com'
