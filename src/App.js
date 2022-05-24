@@ -1,3 +1,4 @@
+import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import AuthContextProvider from "./context/AuthContextProvider";
 import ProductContextProvider from "./context/ProductContextProvider";
@@ -10,6 +11,7 @@ function App() {
       <ProductContextProvider>
       <Navbar />
       <MainRoutes />
+      <Footer />
       </ProductContextProvider>
       </AuthContextProvider>
     </>

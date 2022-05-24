@@ -23,7 +23,6 @@ const EditProduct = () => {
     }, []);
 
 
-    console.log(product);
 
 
     const handleInp = (e) => {
@@ -51,32 +50,30 @@ const EditProduct = () => {
                     variant="outlined"
                     name='name'
                     size="small"
+                    value={product.name || ''}
                     onChange={handleInp}
                 />
-                {/* <Box sx={{display: 'flex'}}>
-
-                <input
-                type='file'
-                sx={{ marginBottom: '10px', borderColor: 'black' }}
-                fullWidth
-                id="outlined-basic"
-                variant="outlined"
-                size="small"
-                onChange={handleInpFile}
-                
-                />
-                 <Button variant='outlined' >Отпрвить</Button> 
-                </Box> */}
                 <TextField
                     sx={{ marginBottom: '10px', borderColor: 'black' }}
                     fullWidth
                     id="outlined-basic"
-                    label="Direction"
+                    label="Image"
                     variant="outlined"
+                    name='image'
                     size="small"
+                    value={product.image || ''}
 
-                    onChange={handleInp}
+                // <input
+                // type='file'
+                // sx={{ marginBottom: '10px', borderColor: 'black' }}
+                // fullWidth
+                // id="outlined-basic"
+                // variant="outlined"
+                // size="small"
+                // onChange={handleInpFile}
+                
                 />
+
                 <TextField
 
                     sx={{ marginBottom: '10px', borderColor: 'black', backgroundColor: 'whitesmoke' }}
@@ -86,6 +83,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='speciality'
                     size="small"
+                    value={product.speciality || ''}
 
                     onChange={handleInp}
                 />
@@ -98,6 +96,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='ranks'
                     size="small"
+                    value={product.ranks || ''}
 
                     onChange={handleInp}
                 />
@@ -111,6 +110,7 @@ const EditProduct = () => {
                     variant="outlined"
                     name='description'
                     size="small"
+                    value={product.description || ''}
 
                     onChange={handleInp}
                 />

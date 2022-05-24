@@ -1,15 +1,23 @@
-import { BottomNavigation, Grid, Pagination } from '@mui/material';
-import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
+
+
+
+
+import { Box, Pagination, Typography } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
-import { useProducts } from '../../context/ProductContextProvider';
 import ProductCard from './ProductCard';
+import { useProducts } from '../../context/ProductContextProvider';
+
 
 const ProductList = () => {
-    const { products, getProducts } = useProducts();
-    const [searchParams, setSearchParams] = useSearchParams();
 
 
+
+    const { products, getProducts, page, setPage, count } = useProducts();
+    const [searchParams] = useSearchParams();
+
+
+    // console.log(products);
     useEffect(() => {
         getProducts();
     }, []);
@@ -17,54 +25,61 @@ const ProductList = () => {
 
 
     useEffect(() => {
-        getProducts();
-        setPage(1)
-    }, [searchParams]);
+        getProducts()
+    }, [page, searchParams])
 
-
-    const [page, setPage] = useState(1)
-    const itemsPerPage = 6
-    const count = Math.ceil(products.length / itemsPerPage)
+    // const [page, setPage] = useState(1)
+    // const itemsPerPage = 15
+    // const count = Math.ceil(products.length / itemsPerPage)
 
     const handleChange = (e, p) => {
-        console.log(p);
         setPage(p)
-
     }
-    // pagination
+
+    // const currentData = () => {
+    //     const begin = (page - 1) * itemsPerPage
+    //     const end = begin + itemsPerPage
+    //     return products.slice(begin, end)
+
+    // }
 
 
-    function currentData() {
-        const begin = (page - 1) * itemsPerPage
-        const end = begin + itemsPerPage;
-        return products.slice(begin, end)
 
-    }
 
     return (
         <>
-            <Grid item md={9}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        minHeight: '40vh',
-                        mb: '3.5vh',
-                    }}
-                >
-                    {products ? (
-                        currentData().map((item) => (
-                            <ProductCard item={item} key={item.id} />
-                        ))
-                    ) : (
-                        <h2>Loading...</h2>
-                    )}
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    my: '35px',
+                    justifyContent: 'space-evenly',
+
+                }}
+            >
+                {products ? (
+                    (products.results || products).map((item) => {
+
+                        return <ProductCard item={item} key={item.id} />
+                    })
+                ) : (
+                    <h2>Loading...</h2>
+                )}
+            </Box>
+            {products ? (
+                <Box sx={{
+                    textAlign: 'center'
+                }}>
+
+                    <Typography>Page: {page}</Typography>
+                    <Box my={3} display="flex" justifyContent="center">
+                        <Pagination count={count} page={page} onChange={handleChange} />
+                    </Box>
                 </Box>
-
-                <Pagination count={count} variant="outlined" shape="rounded" onChange={handleChange} page={page} />
-
-            </Grid>
+            ) : ('')
+            }
         </>
+
     );
 };
 
