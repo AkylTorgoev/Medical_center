@@ -53,6 +53,7 @@ const reducer = (state = INIT_STATE, action) => {
                         payload: data
                     }
                     )
+                    console.log(data)
                 };
 
 
@@ -83,7 +84,12 @@ const reducer = (state = INIT_STATE, action) => {
               newNewProduct.append('ranks', newProduct.ranks)
               newNewProduct.append('description', newProduct.description)
 
-             
+             let ta = newNewProduct.get('ranks')
+
+            //  let image = new FormData()
+            //  image.append('image', newProduct.image)
+                 
+             console.log(ta);
 
             await axios.post(`${API}/`, newNewProduct, config)
             getProducts()

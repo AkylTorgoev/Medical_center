@@ -26,7 +26,7 @@ const AuthContextProvider = ({ children }) => {
     console.log(user);
 
     try {
-      const res = await axios.post(`${AUTH_API}/register`, formData, config);
+      const res = await axios.post(`${AUTH_API}/register/`, formData, config);
     //   navigate('/login');
       console.log(res);
     } catch (e) {
@@ -44,7 +44,7 @@ const AuthContextProvider = ({ children }) => {
       navigate('/login')
     try{
         const res = await axios.post(
-        `${AUTH_API}/activation`,
+        `${AUTH_API}/activation/`,
       {
         activation_code: str,
       },
@@ -67,7 +67,7 @@ const AuthContextProvider = ({ children }) => {
     formData.append('password', password);
 
     try {
-      let res = await axios.post(`${AUTH_API}/login`, formData, config);
+      let res = await axios.post(`${AUTH_API}/login/`, formData, config);
       localStorage.setItem('token', JSON.stringify(res.data));
       localStorage.setItem('username', username);
       setUser(username);
@@ -83,7 +83,7 @@ const AuthContextProvider = ({ children }) => {
       const Authorization = `Bearer ${token.access}`;
 
       let res = await axios.post(
-        `${AUTH_API}/refresh`,
+        `${AUTH_API}/refresh/`,
         {
           refresh: token.refresh,
         },
