@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, Input, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProducts } from '../../context/ProductContextProvider';
@@ -32,6 +32,14 @@ const EditProduct = () => {
         };
         setProduct(obj);
     };
+
+    
+
+    const handleInpFile = (e) => {
+        let file = e.target.files[0];
+        setProduct({...product, image: file})
+    }
+
     return (
         <div>
 
@@ -47,17 +55,11 @@ const EditProduct = () => {
                     value={product.name || ''}
                     onChange={handleInp}
                 />
-                <TextField
-                    sx={{ marginBottom: '10px', borderColor: 'black' }}
-                    fullWidth
-                    id="outlined-basic"
-                    label="Image"
-                    variant="outlined"
-                    name='image'
-                    size="small"
-                    value={product.image || ''}
+                
 
-                    onChange={handleInp}
+                <Input
+                type='file'
+                onChange={handleInpFile}
                 />
 
                 <TextField

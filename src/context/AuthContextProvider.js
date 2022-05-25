@@ -23,12 +23,11 @@ const AuthContextProvider = ({ children }) => {
     let formData = new FormData();
     formData.append('email', user.email);
     formData.append('password', user.password);
-    console.log(user);
 
     try {
-      const res = await axios.post(`${AUTH_API}/register`, formData, config);
-    //   navigate('/login');
-      console.log(res);
+      const res = await axios.post(`${AUTH_API}/register/`, formData, config);
+    console.log(res);
+
     } catch (e) {
       console.log(e);
       setError('error occured');
@@ -44,7 +43,7 @@ const AuthContextProvider = ({ children }) => {
       navigate('/login')
     try{
         const res = await axios.post(
-        `${AUTH_API}/activation`,
+        `${AUTH_API}/activation/`,
       {
         activation_code: str,
       },
@@ -58,7 +57,6 @@ const AuthContextProvider = ({ children }) => {
 
 
   async function login(username, password) {
-    console.log(username, password);
     const config = {
       headers: { 'Content-Type': 'multipart/form-data' },
     };
@@ -67,7 +65,7 @@ const AuthContextProvider = ({ children }) => {
     formData.append('password', password);
 
     try {
-      let res = await axios.post(`${AUTH_API}/login`, formData, config);
+      let res = await axios.post(`${AUTH_API}/login/`, formData, config);
       localStorage.setItem('token', JSON.stringify(res.data));
       localStorage.setItem('username', username);
       setUser(username);
@@ -83,7 +81,7 @@ const AuthContextProvider = ({ children }) => {
       const Authorization = `Bearer ${token.access}`;
 
       let res = await axios.post(
-        `${AUTH_API}/refresh`,
+        `${AUTH_API}/refresh/`,
         {
           refresh: token.refresh,
         },

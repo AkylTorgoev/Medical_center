@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-
       <ProductContextProvider>
       <Navbar />
       <MainRoutes />

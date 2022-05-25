@@ -1,17 +1,17 @@
-import {
-  Box,
-  Button,
-  CardMedia,
-  Grid,
-  makeStyles,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-
+// import {
+//   Box,
+//   Button,
+//   CardMedia,
+//   Grid,
+//   makeStyles,
+//   Paper,
+//   TextField,
+//   Typography,
+// } from "@mui/material";
 import React from "react";
+import ContactUs from "../components/ContactUs/ContactUs";
 
-const ContactUs = () => {
+const ContactUsPage = () => {
   return (
     <Box sx={{ py: "20vh", mt: "3px" }} className="bgImage1">
       <Grid sx={{ display: "flex", justifyContent: "center" }} container>
@@ -77,7 +77,10 @@ const ContactUs = () => {
         </Button>
       </Box>
     </Box>
+    // <div>
+    //   <ContactUs />
+    // </div>
   );
 };
 
-export default ContactUs;
+export default ContactUsPage;
