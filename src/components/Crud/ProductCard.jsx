@@ -6,19 +6,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { IconButton } from '@mui/material';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { IconButton, Tooltip } from '@mui/material';
 import { useProducts } from '../../context/ProductContextProvider';
-// import { useCart } from '../../contexts/CartContextProvider';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import { useCart } from '../../context/CartContextProvider';
+import { useAuth } from '../../context/AuthContextProvider';
+import { ADMIN } from '../../helpers/const';
 
 export default function ProductCard({ item }) {
     const navigate = useNavigate();
 
     const { deleteProduct } = useProducts();
-    // const { addProductToCart, checkProductInCart } = useCart()
+    const { addProductToCart, checkProductInCart } = useCart()
+
+    const {
+        handleLogout,
+        user: { email },
+      } = useAuth();
 
     return (
-        <Card sx={{ maxWidth: 345, justifyContent: 'center' }}>
+
+        <Card sx={{ maxWidth: 300, justifyContent: 'center' }} elevation={24}>
             <CardMedia
                 component="img"
                 height="400"
@@ -58,14 +67,25 @@ export default function ProductCard({ item }) {
                     {item.description}
                 </Typography> */}
             </CardContent>
-            <CardActions>
-                <Button size="small" onClick={() => deleteProduct(item.id)}>
-                    Delete
-                </Button>
+        {email == ADMIN ? (
 
-                <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
-                    Edit
-                </Button>
+            <CardActions>
+                <IconButton>
+                    <DeleteOutlineIcon size="small" onClick={() => deleteProduct(item.id)} />
+                </IconButton>
+
+
+                <IconButton size="small" onClick={() => navigate(`/edit/${item.id}`)}>
+                    <EditIcon />
+                </IconButton>
+
+                {/* <Button size="small" onClick={() => deleteProduct(item.id)}>
+                    Delete
+                </Button> */}
+
+                {/* // <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
+                //     Edit
+                // </Button> */}
 
                 {/* <IconButton onClick={() => addProductToCart(item)}> */}
                 {/* <ShoppingCartIcon
@@ -73,6 +93,11 @@ export default function ProductCard({ item }) {
                 {/* /> */}
                 {/* </IconButton> */}
             </CardActions>
+        ) : (
+                <Button variant='contained' onClick={() => addProductToCart(item)}
+                color={checkProductInCart(item.id) ? 'success' : 'primary'}
+            > Записаться на прием</Button>
+        )}
         </Card>
     );
 }

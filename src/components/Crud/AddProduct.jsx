@@ -46,12 +46,13 @@ const AddProduct = () => {
     }
     const handleInpFile = (e) => {
         let file = e.target.files[0];
-        setProduct({...product, image: file})
+        setProduct({ ...product, image: file })
     }
 
 
     return (
         <div>
+
             <Box sx={{ width: '60vw', margin: '10vh auto' }}>
                 <TextField
                     sx={{ marginBottom: '10px', borderColor: 'black' }}
@@ -63,13 +64,13 @@ const AddProduct = () => {
                     size="small"
                     onChange={handleInp}
                 />
-                <Box sx={{display: 'flex'}}>
+                <Box sx={{ display: 'flex' }}>
 
-                <input
-                type='file'
-                onChange={handleInpFile}
-                    
-                />
+                    <input
+                        type='file'
+                        onChange={handleInpFile}
+
+                    />
                 </Box>
                 <TextField
                     sx={{ marginBottom: '10px', borderColor: 'black' }}
