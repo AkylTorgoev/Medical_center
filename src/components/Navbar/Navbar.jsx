@@ -15,48 +15,9 @@ import { AppBar, Button, Paper, Toolbar } from '@mui/material';
 import { AccountCircle, LogoDev } from '@mui/icons-material';
 import logo from './logo.png';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { width } from '@mui/system';
 import { useAuth } from '../../context/AuthContextProvider';
+import { ADMIN } from '../../helpers/const';
 
-// const Search = styled('div')(({ theme }) => ({
-//   position: 'relative',
-//   borderRadius: theme.shape.borderRadius,
-//   backgroundColor: alpha(theme.palette.common.white, 0.15),
-//   '&:hover': {
-//     backgroundColor: alpha(theme.palette.common.white, 0.25),
-//   },
-//   marginRight: theme.spacing(2),
-//   marginLeft: 0,
-//   width: '100%',
-//   [theme.breakpoints.up('sm')]: {
-//     marginLeft: theme.spacing(3),
-//     width: 'auto',
-//   },
-// }));
-
-// const SearchIconWrapper = styled('div')(({ theme }) => ({
-//   padding: theme.spacing(0, 2),
-//   height: '100%',
-//   position: 'absolute',
-//   pointerEvents: 'none',
-//   display: 'flex',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-// }));
-
-// const StyledInputBase = styled(InputBase)(({ theme }) => ({
-//   color: 'inherit',
-//   '& .MuiInputBase-input': {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     // vertical padding + font size from searchIcon
-//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     [theme.breakpoints.up('md')]: {
-//       width: '20ch',
-//     },
-//   },
-// }));
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -78,7 +39,6 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
-  console.log(user);
 
   return (
     <Box mb={2} sx={{ flexGrow: 1 }}>
@@ -87,15 +47,7 @@ export default function Navbar() {
           <Link to='/'>
             <img id='logo' src={logo} alt="logo" />
           </Link>
-          {/* <Search sx={{border: '1px solid'}}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */}
+          
           <Box sx={{ width: '100%', px: 9, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
 
             <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
@@ -120,24 +72,17 @@ export default function Navbar() {
             </Button>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
+
+          {user == ADMIN ? (
+              <Link to="/admin">
+                <Button sx={{ my: 2, color: 'black' }}>ADMIN PAGE</Button>
+              </Link>
+            ) : (null)}
+
             {user ? (
           <>
           <Box>
-            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={3} color="error">
-              <MailIcon sx={{fontSize: '30px'}}/>
-              </Badge>
-              </IconButton>
-            <IconButton
-            size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-            <Badge badgeContent={17} color="error">
-                <NotificationsIcon sx={{fontSize: '30px'}}/>
-                </Badge>
-              </IconButton> */}
-
+           
 
 
 
@@ -152,18 +97,7 @@ export default function Navbar() {
               <AccountCircle sx={{fontSize: '35px'}}/>
             </IconButton>
           </Box>
-          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-            size="large"
-            aria-label="show more"
-            aria-controls={mobileMenuId}
-            aria-haspopup="true"
-            onClick={handleMobileMenuOpen}
-            color="inherit"
-            >
-            <MoreIcon sx={{fontSize: '30px'}}/>
-            </IconButton>
-          </Box> */}
+          
             <Menu
             anchorEl={anchorEl}
         id="account-menu"
