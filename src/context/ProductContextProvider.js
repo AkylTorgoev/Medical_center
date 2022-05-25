@@ -161,7 +161,7 @@ const reducer = (state = INIT_STATE, action) => {
                 
             
               }
-
+            
                        
 
               const like = async (id) => {
@@ -186,7 +186,8 @@ const reducer = (state = INIT_STATE, action) => {
                 count,
                 fetchByParams,
                 searchFilter,
-                like
+                like,
+                
 
 
             }}

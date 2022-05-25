@@ -11,6 +11,8 @@ import { useProducts } from '../../context/ProductContextProvider';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Pulse from 'react-reveal/Pulse';
+
 // import { useCart } from '../../contexts/CartContextProvider';
 
 export default function ProductCard({ item }) {
@@ -20,85 +22,61 @@ export default function ProductCard({ item }) {
     // const { addProductToCart, checkProductInCart } = useCart()
 
     return (
-
-        <Card sx={{ maxWidth: 300, justifyContent: 'center' }} elevation={24}>
-            <CardMedia
-                component="img"
-                height="400"
-                image={item.image}
-                alt={item.name}
-                onClick={() => navigate(`/courses/${item.id}`)}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {item.name}
-                </Typography>
-
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
-                    {item.direction}
-                </Typography>
-
-                <Typography gutterBottom variant="h5" component="div" sx={{
-                    color: 'blue', fontWeight: '700',
-                }}>
-                    {item.speciality}
-                </Typography>
-
-                <Typography gutterBottom variant="h5" component="div" sx={{
-                    color: 'blue', fontWeight: '700',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    display: '-webkit-box',
-                    WebkitLineClamp: '1',
-                    WebkitBoxOrient: 'vertical',
-                }} >
-                    {item.ranks}
-                </Typography>
-
-                {/* <Typography
-                    variant="body2"
-                    color="text.secondary"
+        <Pulse>
+            <Card sx={{ maxWidth: 300, justifyContent: 'center' }} elevation={24}>
+                <CardMedia
+                    component="img"
+                    height="400"
+                    image={item.image}
+                    alt={item.name}
                     onClick={() => navigate(`/courses/${item.id}`)}
-                    sx={{
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {item.name}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
+                        {item.direction}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div" sx={{
+                        color: 'blue', fontWeight: '700',
+                    }}>
+                        {item.speciality}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div" sx={{
+                        color: 'blue', fontWeight: '700',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         display: '-webkit-box',
-                        WebkitLineClamp: '3',
+                        WebkitLineClamp: '1',
                         WebkitBoxOrient: 'vertical',
-                    }}
-                >
-                    {item.description}
-                </Typography> */}
-            </CardContent>
-            <CardActions>
-                <IconButton>
-                    <DeleteOutlineIcon size="small" onClick={() => deleteProduct(item.id)} />
-                </IconButton>
+                    }} >
+                        {item.ranks}
+                    </Typography>
 
 
-                <IconButton size="small" onClick={() => navigate(`/edit/${item.id}`)}>
-                    <EditIcon />
-                </IconButton>
+                </CardContent>
+                <CardActions>
+                    <IconButton>
+                        <DeleteOutlineIcon size="small" onClick={() => deleteProduct(item.id)} />
+                    </IconButton>
 
-                <IconButton >
-                    <FavoriteBorderIcon onClick={() => like(item.id)} />
-                </IconButton>
-                <Typography>{item.likes}</Typography>
 
-                {/* <Button size="small" onClick={() => deleteProduct(item.id)}>
-                    Delete
-                </Button> */}
+                    <IconButton size="small" onClick={() => navigate(`/edit/${item.id}`)}>
+                        <EditIcon />
+                    </IconButton>
 
-                {/* // <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
-                //     Edit
-                // </Button> */}
+                    <IconButton onClick={() => like(item.id)}>
+                        <FavoriteBorderIcon />
+                    </IconButton>
+                    <Typography>{item.likes}</Typography>
 
-                {/* <IconButton onClick={() => addProductToCart(item)}> */}
-                {/* <ShoppingCartIcon
-                        color={checkProductInCart(item.id) ? 'primary' : ''} */}
-                {/* /> */}
-                {/* </IconButton> */}
-            </CardActions>
-        </Card>
+
+                </CardActions>
+            </Card>
+        </Pulse>
     );
 }
