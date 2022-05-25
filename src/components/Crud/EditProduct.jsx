@@ -29,15 +29,17 @@ const EditProduct = () => {
         let obj = {
             ...product,
             [e.target.name]: e.target.value,
-            'image': e.target.files,
         };
         setProduct(obj);
     };
 
-    // const handleInpFile = (e) => {
-    //     let file = e.target.files[0];
-    //     setProduct({...product, image: file})
-    // }
+    
+
+    const handleInpFile = (e) => {
+        let file = e.target.files[0];
+        setProduct({...product, image: file})
+    }
+
     return (
         <div>
 
@@ -53,25 +55,11 @@ const EditProduct = () => {
                     value={product.name || ''}
                     onChange={handleInp}
                 />
-                <TextField
-                    sx={{ marginBottom: '10px', borderColor: 'black' }}
-                    fullWidth
-                    id="outlined-basic"
-                    label="Image"
-                    variant="outlined"
-                    name='image'
-                    size="small"
-                    value={product.image || ''}
-
-                // <input
-                // type='file'
-                // sx={{ marginBottom: '10px', borderColor: 'black' }}
-                // fullWidth
-                // id="outlined-basic"
-                // variant="outlined"
-                // size="small"
-                // onChange={handleInpFile}
                 
+
+                <Input
+                type='file'
+                onChange={handleInpFile}
                 />
 
                 <TextField
