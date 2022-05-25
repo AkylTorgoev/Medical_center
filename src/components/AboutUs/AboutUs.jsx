@@ -13,7 +13,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 import { height } from "@mui/system";
 
+
 const cards = [1, 2, 3];
+
 
 const theme = createTheme();
 
@@ -79,6 +81,7 @@ export default function AboutUs() {
             </Container>
           </Paper>
         </Box>
+
 
         <Box
           sx={{
@@ -232,4 +235,5 @@ export default function AboutUs() {
       </main>
     </ThemeProvider>
   );
+
 }

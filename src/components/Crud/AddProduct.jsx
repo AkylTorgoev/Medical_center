@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../context/ProductContextProvider";
 
 const AddProduct = () => {
+
   const { addProduct, getProducts } = useProducts();
 
   useEffect(() => {
@@ -155,6 +156,7 @@ const AddProduct = () => {
       </Box>
     </Box>
   );
+
 };
 
 export default AddProduct;

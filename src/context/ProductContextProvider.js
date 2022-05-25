@@ -97,7 +97,9 @@ const reducer = (state = INIT_STATE, action) => {
         }
 
         const deleteProduct = async (id) => {
-            await axios.delete(`${API}/${id}/`)
+          let token = JSON.parse(localStorage.getItem('token'));
+          const Authorization = `Bearer ${token.access}`;
+            await axios.delete(`${API}/${id}/`, {headers: { Authorization },})
             getProducts()
           }
         
@@ -159,7 +161,15 @@ const reducer = (state = INIT_STATE, action) => {
                 
             
               }
-          
+            
+                       
+
+              const like = async (id) => {
+                let token = JSON.parse(localStorage.getItem('token'));
+                const Authorization = `Bearer ${token.access}`;
+                  await axios(`${API}/${id}/toggle_like`, {headers: { Authorization },})
+                  getProducts()
+                }
 
 
         return <productContext.Provider 
@@ -175,8 +185,9 @@ const reducer = (state = INIT_STATE, action) => {
                 page,
                 count,
                 fetchByParams,
-                searchFilter
-
+                searchFilter,
+                like,
+                
 
 
             }}
