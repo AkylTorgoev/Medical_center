@@ -35,6 +35,7 @@ export default function AboutUs() {
                         pt: 8,
                         pb: 6,
                     }}
+
                 >
                     <Paper sx={{ maxWidth: "100%", m: 6, boxShadow: 0 }}>
                         <Container
@@ -48,11 +49,7 @@ export default function AboutUs() {
                         >
                             <Grid container
                             >
-                                <Grid item sm={12} md={6} sx={{ margin: "auto" }}
-                                    data-aos="fade-right"
-                                    data-aos-offset="300"
-                                    data-aos-easing="ease-in-sine"
-                                >
+                                <Grid item sm={12} md={6} sx={{ margin: "auto" }}>
                                     <Typography
                                         component="h1"
                                         variant="h3"
