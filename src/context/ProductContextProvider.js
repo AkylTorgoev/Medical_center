@@ -97,7 +97,9 @@ const reducer = (state = INIT_STATE, action) => {
         }
 
         const deleteProduct = async (id) => {
-            await axios.delete(`${API}/${id}/`)
+          let token = JSON.parse(localStorage.getItem('token'));
+          const Authorization = `Bearer ${token.access}`;
+            await axios.delete(`${API}/${id}/`, {headers: { Authorization },})
             getProducts()
           }
         

@@ -16,24 +16,24 @@ const SideBar = () => {
 
   const [search, setSearch] = useState(searchParams.get('q') || '');
 
-//   useEffect(() => {
-//     setSearchParams({
-//       q: search,
-//     })
+  //   useEffect(() => {
+  //     setSearchParams({
+  //       q: search,
+  //     })
 
-//   }, [ search]);
-  
+  //   }, [ search]);
+
 
 
   return (
     <Grid item md={2} >
-      <Paper elevation={5} sx={{ p: 2, bgcolor:'#f5f5f5'}}>
+      <Paper elevation={5} sx={{ p: 2, bgcolor: '#f5f5f5', marginRight: '30px' }}>
         <TextField
           fullWidth
           id="input-with-icon-textfield"
           label="Search..."
-        //   value={search}
-          onChange={(e) =>  searchFilter(e.target.value)}
+          //   value={search}
+          onChange={(e) => searchFilter(e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -45,42 +45,42 @@ const SideBar = () => {
         />
 
 
-<Grid>
-<Box sx={{display: 'flex', flexDirection: 'column'}}>
+        <Grid>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
 
-          <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Specialities</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="все"
-              name="radio-buttons-group"
-              onChange={(e) => fetchByParams(e.target.value)}
-            >
-              <FormControlLabel value="all" control={<Radio />} label="все" />
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">Specialities</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="все"
+                name="radio-buttons-group"
+                onChange={(e) => fetchByParams(e.target.value)}
+              >
+                <FormControlLabel value="all" control={<Radio />} label="все" />
 
-              <FormControlLabel
-                value="urolog"
-                control={<Radio />}
-                label="Urolog"
-              />
+                <FormControlLabel
+                  value="urolog"
+                  control={<Radio />}
+                  label="Urolog"
+                />
 
-              <FormControlLabel
-                value="nevrology"
-                control={<Radio />}
-                label="Nevrology"
-              />
+                <FormControlLabel
+                  value="nevrology"
+                  control={<Radio />}
+                  label="Nevrology"
+                />
 
-              
 
-            </RadioGroup>
-          </FormControl>
+
+              </RadioGroup>
+            </FormControl>
           </Box>
         </Grid>
 
 
 
 
-          
+
       </Paper>
     </Grid>
   );

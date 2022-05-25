@@ -28,6 +28,7 @@ export default function AboutUs() {
         <ThemeProvider theme={theme}>
             <main>
 
+
                 <Box
                     sx={{
                         bgcolor: "background.paper",
