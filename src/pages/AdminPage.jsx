@@ -4,9 +4,9 @@ import AddProduct from "../components/Crud/AddProduct";
 const AdminPage = () => {
   return (
     <div>
-
       <AddProduct />
-    </div>);
+    </div>
+  );
 };
 
 export default AdminPage;

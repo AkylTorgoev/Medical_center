@@ -1,5 +1,4 @@
-
-import * as React from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,20 +13,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 import { height } from "@mui/system";
 
-function Copyright() {
-  return <></>;
-}
-import React from 'react';
+function Copyright() {}
 
 const AboutUsPage = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <div></div>;
 };
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3];
 
 const theme = createTheme();
 

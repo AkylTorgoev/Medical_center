@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CardMedia,
   Grid,
   makeStyles,
   Paper,
@@ -13,6 +14,17 @@ import React from "react";
 const ContactUs = () => {
   return (
     <Box sx={{ py: "20vh", mt: "3px" }} className="bgImage1">
+      <Grid sx={{ display: "flex", justifyContent: "center" }} container>
+        <Grid item sm={12} md={6}>
+          <CardMedia
+            component="img"
+            sx={{ width: "100%", height: "100%", margin: "0 auto" }}
+            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_BxtApMq4nZZndeUXLbOdsNAJWWM0sAoB6Q&usqp=CAU"
+            alt="Shop"
+          />
+        </Grid>
+      </Grid>
+      ;
       <Box
         p={5}
         noValidate
