@@ -13,11 +13,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useCart } from '../../context/CartContextProvider';
 import { useAuth } from '../../context/AuthContextProvider';
 import { ADMIN } from '../../helpers/const';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Pulse from 'react-reveal/Pulse';
+
 
 export default function ProductCard({ item }) {
     const navigate = useNavigate();
 
-    const { deleteProduct } = useProducts();
+    const { deleteProduct, like } = useProducts();
     const { addProductToCart, checkProductInCart } = useCart()
 
     const {
@@ -26,78 +29,70 @@ export default function ProductCard({ item }) {
       } = useAuth();
 
     return (
-
-        <Card sx={{ maxWidth: 300, justifyContent: 'center' }} elevation={24}>
-            <CardMedia
-                component="img"
-                height="400"
-                image={item.image}
-                alt={item.name}
-                onClick={() => navigate(`/courses/${item.id}`)}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {item.name}
-                </Typography>
-
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
-                    {item.direction}
-                </Typography>
-
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
-                    {item.speciality}
-                </Typography>
-
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
-                    {item.ranks}
-                </Typography>
-
-                {/* <Typography
-                    variant="body2"
-                    color="text.secondary"
+        <Pulse>
+            <Card sx={{ maxWidth: 300, justifyContent: 'center' }} elevation={24}>
+                <CardMedia
+                    component="img"
+                    height="400"
+                    image={item.image}
+                    alt={item.name}
                     onClick={() => navigate(`/courses/${item.id}`)}
-                    sx={{
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {item.name}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
+                        {item.direction}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div" sx={{
+                        color: 'blue', fontWeight: '700',
+                    }}>
+                        {item.speciality}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div" sx={{
+                        color: 'blue', fontWeight: '700',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         display: '-webkit-box',
-                        WebkitLineClamp: '3',
+                        WebkitLineClamp: '1',
                         WebkitBoxOrient: 'vertical',
                     }}
                 >
                     {item.description}
-                </Typography> */}
+                </Typography> 
             </CardContent>
         {email == ADMIN ? (
 
-            <CardActions>
-                <IconButton>
-                    <DeleteOutlineIcon size="small" onClick={() => deleteProduct(item.id)} />
-                </IconButton>
+            
+                <CardActions>
+                    <IconButton>
+                        <DeleteOutlineIcon size="small" onClick={() => deleteProduct(item.id)} />
+                    </IconButton>
 
 
-                <IconButton size="small" onClick={() => navigate(`/edit/${item.id}`)}>
-                    <EditIcon />
-                </IconButton>
+                    <IconButton size="small" onClick={() => navigate(`/edit/${item.id}`)}>
+                        <EditIcon />
+                    </IconButton>
 
-                {/* <Button size="small" onClick={() => deleteProduct(item.id)}>
-                    Delete
-                </Button> */}
-
-                {/* // <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
-                //     Edit
-                // </Button> */}
-
-                {/* <IconButton onClick={() => addProductToCart(item)}> */}
-                {/* <ShoppingCartIcon
-                        color={checkProductInCart(item.id) ? 'primary' : ''} */}
-                {/* /> */}
-                {/* </IconButton> */}
             </CardActions>
         ) : (
-                <Button variant='contained' onClick={() => addProductToCart(item)}
-                color={checkProductInCart(item.id) ? 'success' : 'primary'}
+            <Button variant='contained' onClick={() => addProductToCart(item)}
+            color={checkProductInCart(item.id) ? 'success' : 'primary'}
             > Записаться на прием</Button>
-        )}
-        </Card>
+            )}
+
+            <IconButton onClick={() => like(item.id)}>
+                <FavoriteBorderIcon />
+            </IconButton>
+            <Typography>{item.likes}</Typography>
+                    
+
+
+            </Card>
+        </Pulse>
     );
 }
