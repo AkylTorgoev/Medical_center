@@ -17,7 +17,7 @@ const ProductList = () => {
     const [searchParams] = useSearchParams();
 
 
-    // console.log(products);
+
     useEffect(() => {
         getProducts();
     }, []);
@@ -28,20 +28,12 @@ const ProductList = () => {
         getProducts()
     }, [page, searchParams])
 
-    // const [page, setPage] = useState(1)
-    // const itemsPerPage = 15
-    // const count = Math.ceil(products.length / itemsPerPage)
+
 
     const handleChange = (e, p) => {
         setPage(p)
     }
 
-    // const currentData = () => {
-    //     const begin = (page - 1) * itemsPerPage
-    //     const end = begin + itemsPerPage
-    //     return products.slice(begin, end)
-
-    // }
 
 
 
@@ -71,7 +63,7 @@ const ProductList = () => {
                     textAlign: 'center'
                 }}>
 
-                    <Typography>Page: {page}</Typography>
+
                     <Box my={3} display="flex" justifyContent="center">
                         <Pagination count={count} page={page} onChange={handleChange} />
                     </Box>

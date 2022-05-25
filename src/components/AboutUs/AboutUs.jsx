@@ -45,8 +45,13 @@ export default function AboutUs() {
                             }}
                             spacing={5}
                         >
-                            <Grid container>
-                                <Grid item sm={12} md={6} sx={{ margin: "auto" }}>
+                            <Grid container
+                            >
+                                <Grid item sm={12} md={6} sx={{ margin: "auto" }}
+                                    data-aos="fade-right"
+                                    data-aos-offset="300"
+                                    data-aos-easing="ease-in-sine"
+                                >
                                     <Typography
                                         component="h1"
                                         variant="h3"
