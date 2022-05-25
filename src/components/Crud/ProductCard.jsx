@@ -10,16 +10,23 @@ import { IconButton, Tooltip } from '@mui/material';
 import { useProducts } from '../../context/ProductContextProvider';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useCart } from '../../context/CartContextProvider';
+import { useAuth } from '../../context/AuthContextProvider';
+import { ADMIN } from '../../helpers/const';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Pulse from 'react-reveal/Pulse';
 
-// import { useCart } from '../../contexts/CartContextProvider';
 
 export default function ProductCard({ item }) {
     const navigate = useNavigate();
 
     const { deleteProduct, like } = useProducts();
-    // const { addProductToCart, checkProductInCart } = useCart()
+    const { addProductToCart, checkProductInCart } = useCart()
+
+    const {
+        handleLogout,
+        user: { email },
+      } = useAuth();
 
     return (
         <Pulse>
@@ -53,12 +60,14 @@ export default function ProductCard({ item }) {
                         display: '-webkit-box',
                         WebkitLineClamp: '1',
                         WebkitBoxOrient: 'vertical',
-                    }} >
-                        {item.ranks}
-                    </Typography>
+                    }}
+                >
+                    {item.description}
+                </Typography> 
+            </CardContent>
+        {email == ADMIN ? (
 
-
-                </CardContent>
+            
                 <CardActions>
                     <IconButton>
                         <DeleteOutlineIcon size="small" onClick={() => deleteProduct(item.id)} />
@@ -69,13 +78,24 @@ export default function ProductCard({ item }) {
                         <EditIcon />
                     </IconButton>
 
-                    <IconButton onClick={() => like(item.id)}>
-                        <FavoriteBorderIcon />
-                    </IconButton>
-                    <Typography>{item.likes}</Typography>
+            </CardActions>
+        ) : (
+            <Button variant='contained' onClick={() => addProductToCart(item)}
+            color={checkProductInCart(item.id) ? 'success' : 'primary'}
+
+            > Записаться на прием</Button>
+            )}
+
+            <IconButton onClick={() => like(item.id)}>
+                <FavoriteIcon  
+            color='error'
+
+                />
+            </IconButton>
+            <Typography>{item.likes}</Typography>
+                    
 
 
-                </CardActions>
             </Card>
         </Pulse>
     );

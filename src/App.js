@@ -1,6 +1,7 @@
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import AuthContextProvider from "./context/AuthContextProvider";
+import CartContextProvider from "./context/CartContextProvider";
 import ProductContextProvider from "./context/ProductContextProvider";
 import MainRoutes from "./routes/Mainroutes";
 
@@ -8,11 +9,13 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-      <ProductContextProvider>
-      <Navbar />
-      <MainRoutes />
-      <Footer />
-      </ProductContextProvider>
+        <ProductContextProvider>
+          <CartContextProvider>
+            <Navbar />
+            <MainRoutes />
+            <Footer />
+          </CartContextProvider>
+        </ProductContextProvider>
       </AuthContextProvider>
     </>
   );
