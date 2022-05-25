@@ -11,12 +11,15 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { AppBar, Button, Paper, Toolbar } from '@mui/material';
-import { AccountCircle, LogoDev } from '@mui/icons-material';
+import { AppBar, Badge, Button, Drawer, Paper, Toolbar } from '@mui/material';
+import FaceIcon from '@mui/icons-material/Face';
 import logo from './logo.png';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContextProvider';
 import { ADMIN } from '../../helpers/const';
+import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import Cart from '../cart/Cart';
+import { color } from '@mui/system';
 
 
 export default function Navbar() {
@@ -40,9 +43,40 @@ export default function Navbar() {
   const navigate = useNavigate();
 
 
+  //Cart
+  const [count, setCount] = React.useState(0);
+
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+ 
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: 'auto'}}
+      role="presentation"
+      // onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <Cart/>
+
+    </Box>
+  );
+
+  console.log(count)
+
   return (
-    <Box mb={2} sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0' }}>
+    <Box mb={2} sx={{ flexGrow: 1, }}>
+      <AppBar position="static" sx={{ bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0',  borderRadius: '0 0 14px 14px' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
           <Link to='/'>
             <img id='logo' src={logo} alt="logo" />
@@ -60,12 +94,12 @@ export default function Navbar() {
                 Консультация
               </Link>
             </Button>
-            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, color: 'black' }} variant='text'>
               <Link to='/about'>
                 О нас
               </Link>
             </Button>
-            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, px: 3, color: 'black' }} variant='text'>
+            <Button sx={{ fontFamily: 'Source Sans Pro', fontSize: { xl: '19px' }, color: 'black' }} variant='text'>
               <Link to='/contacts'>
                 Связаться с нами
               </Link>
@@ -77,7 +111,44 @@ export default function Navbar() {
               <Link to="/admin">
                 <Button sx={{ my: 2, color: 'black' }}>ADMIN PAGE</Button>
               </Link>
-            ) : (null)}
+            ) : (
+              <Box sx={{ my: 2, color: 'black' }}>
+                <Badge badgeContent={count} color="error">
+                  
+                  {['right'].map((anchor) => (
+                  <React.Fragment key={anchor}>
+                    <Button onClick={toggleDrawer(anchor, true)}>    
+                      {count > 0 ?
+                      <MedicalServicesIcon
+                      color='green' sx={{fontSize: '28px'}}
+                      /> : <MedicalServicesIcon
+                      color='black' sx={{fontSize: '28px'}}
+                      />
+                      }
+                    </Button>
+
+                    <Drawer
+                        
+                      onClose={toggleDrawer(anchor, false)}
+                      anchor={anchor}
+                     
+                      
+                      open={state[anchor]}
+                      PaperProps={{
+                        sx: { width: {xs: "75%", sm: "55%", md: "35%"}, borderRadius: '10% 10% 10% 30%',  bgcolor: '#e8eaf6'},
+                      }}
+                      
+                    >
+                      
+                      
+                      {list(anchor)}
+
+                    </Drawer>
+                  </React.Fragment>
+                  ))}
+                </Badge>
+              </Box>
+          )}
 
             {user ? (
           <>
@@ -94,7 +165,7 @@ export default function Navbar() {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               >
-              <AccountCircle sx={{fontSize: '35px'}}/>
+              <FaceIcon color='success' sx={{fontSize: '35px'}}/>
             </IconButton>
           </Box>
           
