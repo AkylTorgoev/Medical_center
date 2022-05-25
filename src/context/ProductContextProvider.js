@@ -53,7 +53,6 @@ const reducer = (state = INIT_STATE, action) => {
                         payload: data
                     }
                     )
-                    console.log(data)
                 };
 
 
@@ -66,16 +65,20 @@ const reducer = (state = INIT_STATE, action) => {
                 type: ACTIONS.GET_PRODUCT_DETAILS,
                 payload: data
             });
-            console.log(data);
 
         };
 
 
 
         const addProduct = async (newProduct) => {
-            const config ={
-                headers: {'Content-Type':'multipart/form-data'}
-              }
+            let token = JSON.parse(localStorage.getItem('token'));
+
+
+            const Authorization = `Bearer ${token.access}`;
+
+            // const config ={
+            //     headers: {'Content-Type':'multipart/form-data'}
+            //   }
           
               let newNewProduct = new FormData()
               newNewProduct.append('name', newProduct.name)
@@ -85,12 +88,10 @@ const reducer = (state = INIT_STATE, action) => {
               newNewProduct.append('ranks', newProduct.ranks)
               newNewProduct.append('description', newProduct.description)
 
-             let ta = newNewProduct.get('ranks')
-
-                 
-             console.log(ta);
-
-            await axios.post(`${API}/`, newNewProduct, config)
+                
+            await axios.post(`${API}/`, newNewProduct, {
+                headers: { Authorization },
+              })
             getProducts()
 
         }
@@ -103,32 +104,41 @@ const reducer = (state = INIT_STATE, action) => {
         
         
           const saveEditedProduct = async (newProduct) => {
-            const config ={
-                headers: {'Content-Type':'multipart/form-data'}
-              }
+            let token = JSON.parse(localStorage.getItem('token'));
+
+
+            const Authorization = `Bearer ${token.access}`;
+
+
+            // const config ={
+            //     headers: {'Content-Type':'multipart/form-data'}
+            //   }
 
             let newEditProduct = new FormData()
               newEditProduct.append('name', newProduct.name)
-              newEditProduct.append('image', newProduct.image)
               newEditProduct.append('speciality', newProduct.speciality)
               newEditProduct.append('ranks', newProduct.ranks)
               newEditProduct.append('description', newProduct.description)
               newEditProduct.append('id', newProduct.id)
+              if(typeof(newProduct.image) !== 'string'){
+              newEditProduct.append('image', newProduct.image)
+              }
               let id = newEditProduct.get('id')
-              console.log(id);
               
               
-            await axios.patch(`${API}/${id}/`, newEditProduct, config);
+            await axios.patch(`${API}/${id}/`, newEditProduct, {
+                headers: { Authorization },
+              });
             getProducts()
           };
         
 
-          const fetchByParams = async(query, value)=>{
+          const fetchByParams = async(value)=>{
             if(value==='all'){
               getProducts()
             }else{
                 
-              const { data } = await axios(`${API}filter/?${query}=${value}`)
+              const { data } = await axios(`${API}?speciality=${value}`)
             
               dispatch({
                 type: ACTIONS.GET_PRODUCTS,
@@ -139,12 +149,13 @@ const reducer = (state = INIT_STATE, action) => {
             
               const searchFilter = async(value)=>{
               
-                const { data } = await axios(`${API}search/?q=${value}`)
-              
-                dispatch({
-                  type: ACTIONS.GET_PRODUCTS,
-                  payload: data
-                })
+                  const { data } = await axios(`${API}/search/?q=${value}`)
+                  
+                  dispatch({
+                      type: ACTIONS.GET_PRODUCTS,
+                      payload: data
+                    })
+                    console.log(data);
                 
             
               }

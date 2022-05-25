@@ -57,13 +57,9 @@ const EditProduct = () => {
                 />
                 
 
-                <input
+                <Input
                 type='file'
-                sx={{ marginBottom: '10px', borderColor: 'black' }}
-                size="small"
                 onChange={handleInpFile}
-                
-                
                 />
 
                 <TextField

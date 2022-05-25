@@ -23,12 +23,11 @@ const AuthContextProvider = ({ children }) => {
     let formData = new FormData();
     formData.append('email', user.email);
     formData.append('password', user.password);
-    console.log(user);
 
     try {
       const res = await axios.post(`${AUTH_API}/register/`, formData, config);
-    //   navigate('/login');
-      console.log(res);
+    console.log(res);
+
     } catch (e) {
       console.log(e);
       setError('error occured');
@@ -58,7 +57,6 @@ const AuthContextProvider = ({ children }) => {
 
 
   async function login(username, password) {
-    console.log(username, password);
     const config = {
       headers: { 'Content-Type': 'multipart/form-data' },
     };
