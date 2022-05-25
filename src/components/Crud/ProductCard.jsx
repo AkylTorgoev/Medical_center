@@ -10,12 +10,13 @@ import { IconButton, Tooltip } from '@mui/material';
 import { useProducts } from '../../context/ProductContextProvider';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // import { useCart } from '../../contexts/CartContextProvider';
 
 export default function ProductCard({ item }) {
     const navigate = useNavigate();
 
-    const { deleteProduct } = useProducts();
+    const { deleteProduct, like } = useProducts();
     // const { addProductToCart, checkProductInCart } = useCart()
 
     return (
@@ -37,11 +38,20 @@ export default function ProductCard({ item }) {
                     {item.direction}
                 </Typography>
 
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{
+                    color: 'blue', fontWeight: '700',
+                }}>
                     {item.speciality}
                 </Typography>
 
-                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{
+                    color: 'blue', fontWeight: '700',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    display: '-webkit-box',
+                    WebkitLineClamp: '1',
+                    WebkitBoxOrient: 'vertical',
+                }} >
                     {item.ranks}
                 </Typography>
 
@@ -69,6 +79,11 @@ export default function ProductCard({ item }) {
                 <IconButton size="small" onClick={() => navigate(`/edit/${item.id}`)}>
                     <EditIcon />
                 </IconButton>
+
+                <IconButton >
+                    <FavoriteBorderIcon onClick={() => like(item.id)} />
+                </IconButton>
+                <Typography>{item.likes}</Typography>
 
                 {/* <Button size="small" onClick={() => deleteProduct(item.id)}>
                     Delete
