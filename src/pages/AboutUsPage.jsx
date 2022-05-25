@@ -223,14 +223,18 @@ export default function AboutUs() {
                       // 16:9
                       pt: "56.25%",
                     }}
-                    image="https://media.istockphoto.com/photos/medical-tech-science-innovative-iot-global-healthcare-ai-technology-picture-id1298626492?b=1&k=20&m=1298626492&s=170667a&w=0&h=gKFiFmLzM-jXK3IGgRHoBoP7dlRK1AecT8w1ivLGBSU="
+                    image="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjAwfHxtZWRpY2FsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500"
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      УЗИ
+                      Отзывы наших посетителей
                     </Typography>
-                    <Typography>Разные виды диагностики</Typography>
+                    <Typography>
+                      От себя хочу сказать огромное спасибо Евгению Валерьевичу,
+                      за подробное разъяснение нашей проблемы, за рекомендации,
+                      за подход!{" "}
+                    </Typography>
                   </CardContent>
                 </Card>
               </Grid>
