@@ -6,10 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { AppBar, Badge, Button, Drawer, Paper, Toolbar } from '@mui/material';
 import FaceIcon from '@mui/icons-material/Face';
@@ -19,7 +16,8 @@ import { useAuth } from '../../context/AuthContextProvider';
 import { ADMIN } from '../../helpers/const';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import Cart from '../cart/Cart';
-import { color } from '@mui/system';
+import { getCountProductsInCart } from '../../helpers/functions';
+import { useCart } from '../../context/CartContextProvider';
 
 
 export default function Navbar() {
@@ -33,12 +31,18 @@ export default function Navbar() {
   };
   
   const { user, checkAuth, logout } = useAuth();
+  const { addProductToCart } = useCart();
+
 
   React.useEffect(() => {
     if (localStorage.getItem('token')) {
       checkAuth();
     }
   }, []);
+
+  React.useEffect(() => {
+    setCount(getCountProductsInCart);
+  }, [addProductToCart]);
 
   const navigate = useNavigate();
 
@@ -64,7 +68,6 @@ export default function Navbar() {
     <Box
       sx={{ width: 'auto'}}
       role="presentation"
-      // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Cart/>
@@ -72,7 +75,8 @@ export default function Navbar() {
     </Box>
   );
 
-  console.log(count)
+
+  
 
   return (
     <Box mb={2} sx={{ flexGrow: 1, }}>
@@ -112,17 +116,19 @@ export default function Navbar() {
                 <Button sx={{ my: 2, color: 'black' }}>ADMIN PAGE</Button>
               </Link>
             ) : (
+              <>
+              {user ? (
               <Box sx={{ my: 2, color: 'black' }}>
                 <Badge badgeContent={count} color="error">
                   
                   {['right'].map((anchor) => (
                   <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>    
+                    <Button sx={{p: '0'}} onClick={toggleDrawer(anchor, true)}>    
                       {count > 0 ?
                       <MedicalServicesIcon
-                      color='green' sx={{fontSize: '28px'}}
+                      color='secondary' sx={{fontSize: '32px'}}
                       /> : <MedicalServicesIcon
-                      color='black' sx={{fontSize: '28px'}}
+                      color='primary' sx={{fontSize: '32px'}}
                       />
                       }
                     </Button>
@@ -137,10 +143,7 @@ export default function Navbar() {
                       PaperProps={{
                         sx: { width: {xs: "75%", sm: "55%", md: "35%"}, borderRadius: '10% 10% 10% 30%',  bgcolor: '#e8eaf6'},
                       }}
-                      
                     >
-                      
-                      
                       {list(anchor)}
 
                     </Drawer>
@@ -148,15 +151,13 @@ export default function Navbar() {
                   ))}
                 </Badge>
               </Box>
+          ) : (null)}
+          </>
           )}
 
             {user ? (
           <>
           <Box>
-           
-
-
-
           <IconButton
               onClick={handleClick}
               size="small"

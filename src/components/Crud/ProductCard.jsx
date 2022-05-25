@@ -13,7 +13,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useCart } from '../../context/CartContextProvider';
 import { useAuth } from '../../context/AuthContextProvider';
 import { ADMIN } from '../../helpers/const';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Pulse from 'react-reveal/Pulse';
 
 
@@ -82,11 +82,15 @@ export default function ProductCard({ item }) {
         ) : (
             <Button variant='contained' onClick={() => addProductToCart(item)}
             color={checkProductInCart(item.id) ? 'success' : 'primary'}
+
             > Записаться на прием</Button>
             )}
 
             <IconButton onClick={() => like(item.id)}>
-                <FavoriteBorderIcon />
+                <FavoriteIcon  
+            color='error'
+
+                />
             </IconButton>
             <Typography>{item.likes}</Typography>
                     

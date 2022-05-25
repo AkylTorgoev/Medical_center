@@ -11,7 +11,7 @@ import AdminPage from "../pages/AdminPage";
 import EditCoursePage from "../pages/EditCoursePage";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
-import PaymentPage from "../pages/PaymentPage";
+import Payment from "../components/Payment/Payment";
 
 const MainRoutes = () => {
   // const { user } = useAuth();
@@ -58,7 +58,7 @@ const MainRoutes = () => {
     },
     {
       link: "/payment",
-      element: <PaymentPage />,
+      element: <Payment />,
       id: 9,
     },
     {

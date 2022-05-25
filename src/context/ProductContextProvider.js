@@ -171,7 +171,8 @@ const reducer = (state = INIT_STATE, action) => {
               const like = async (id) => {
                 let token = JSON.parse(localStorage.getItem('token'));
                 const Authorization = `Bearer ${token.access}`;
-                  await axios(`${API}/${id}/toggle_like`, {headers: { Authorization },})
+                  const count = await axios(`${API}/${id}/toggle_like`, {headers: { Authorization },})
+                  console.log(count);
                   getProducts()
                 }
 

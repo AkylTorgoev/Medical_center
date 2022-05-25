@@ -32,7 +32,6 @@ export default function Cart({}) {
   };
 
 
-
   return (
     // <TableContainer >
     //   <Table sx={{ minWidth: 700, mb: 7 }} aria-label="customized table">
@@ -72,45 +71,45 @@ export default function Cart({}) {
     //   <Button variant='contained' sx={{my: 3, alignSelf: 'center', border: '1px solid #2e7d32', borderRadius: '4%', color: 'white', bgcolor: '#a5d6a7'}} onClick={()=>navigate('/payment')}> BUY NOW FOR {cart?.totalPrice} $</Button>
     //         </Box>
     // </TableContainer>
-    <Box >
+    <Box mb={10}>
             <Paper elevation={4} sx={{display: 'flex', justifyContent: 'space-around', m: '20px auto', p: '20px 0', width: '90%', borderRadius: '45px'}}>
                 <img src={cartImage} className='cartImage'/>
                 <Typography variant='h4' sx={{alignSelf: 'center', mb: '20px'}}>Ваши консультации:</Typography> 
             </Paper>
            {cart?.products.map((row) => (
+               <Box key={row.item.id}>
 
         <Stack spacing={2} sx={{p: '7% 10%'}}>
-          <ListItem sx={{border: '1px solid', borderRadius: '10px'}}>
-                <Box mt={4}>
-                  {row.item.image}
-                </Box>
-                <Box mt={4}>
+          <Box sx={{py: '10px', border: '1px solid', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
+                <img src={row.item.image} alt="Doctor" className='cartItemImage'/>                
+                <Typography variant='h5' mt={1} sx={{width: '100px'}}>
                     {row.item.name}
-                </Box>
+                </Typography>
 
-                <Box mt={4}>
+                <Typography mt={1} sx={{width: '100px', fontSize: '14px'}}>
                     {row.item.ranks}
-                </Box>
+                </Typography>
 
-                <Box mt={4}>
+                <Typography mt={1} sx={{ fontSize: '16px', fontWeight: 'bold'}}>
                     {row.item.speciality}
-                </Box>
+                </Typography>
 
 
-          </ListItem>
+          </Box>
           
-          <Button onClick={() => deleteCartProduct(row.item.id)}>
-                   DELETE
+          <Button color='error' variant='outlined' size='small' sx={{maxWidth: '19em', borderRadius: '15px', m: '8px auto'}} onClick={() => deleteCartProduct(row.item.id)}>
+                   Удалить из избранного
                  </Button>
+        </Stack>
+               </Box>
+           ))}
           <Box
            sx={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}
            >
 
-          <Button onClick={() => deleteCartProduct(row.item.id)} variant='outlined' size='large' sx={{borderRadius: '15px', mt: '8px'}} >Очистить избранное</Button>
-          <Button onClick={cartCleaner} variant='contained' size='large' sx={{borderRadius: '15px', mt: '15px'}} >Записаться на прием и оплатить</Button>
+          <Button  onClick={cartCleaner} variant='contained' color='error' size='large' sx={{maxWidth: '19em', borderRadius: '15px', m: '8px auto'}} >Очистить избранное</Button>
+          <Button variant='contained' color='success' size='large' sx={{maxWidth: '30em', borderRadius: '15px',  m: '8px auto'}} onClick={()=>{navigate('/payment') }}>Записаться на прием и оплатить</Button>
           </Box>
-        </Stack>
-           ))}
 
     </Box>
   );

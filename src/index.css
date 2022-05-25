@@ -25,3 +25,8 @@ a {
   width: 200px !important;
   border-radius: 15px !important;
 }
+
+.cartItemImage {
+  width: 120px !important;
+  border-radius: 15px !important;
+}
