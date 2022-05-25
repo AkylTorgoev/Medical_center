@@ -97,7 +97,9 @@ const reducer = (state = INIT_STATE, action) => {
         }
 
         const deleteProduct = async (id) => {
-            await axios.delete(`${API}/${id}/`)
+          let token = JSON.parse(localStorage.getItem('token'));
+          const Authorization = `Bearer ${token.access}`;
+            await axios.delete(`${API}/${id}/`, {headers: { Authorization },})
             getProducts()
           }
         
@@ -159,6 +161,19 @@ const reducer = (state = INIT_STATE, action) => {
                 
             
               }
+
+              function checkLike(id) {
+                let like = JSON.parse(localStorage.getItem('like'));
+                if (like) {
+                  let newLike = like.products.filter((elem) => elem.item.id == id);
+                  return newLike.length > 0 ? true : false;
+                } else {
+                  like = {
+                    product: [],
+                    totalPrice: 0,
+                  };
+                }
+              }
           
 
 
@@ -175,8 +190,8 @@ const reducer = (state = INIT_STATE, action) => {
                 page,
                 count,
                 fetchByParams,
-                searchFilter
-
+                searchFilter,
+                checkLike
 
 
             }}

@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 
 
 
-import { Box, Pagination, Typography } from '@mui/material';
+import { Box, Grid, Pagination, Typography } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { useProducts } from '../../context/ProductContextProvider';
+import Carousel from '../Carousel/Carousel';
 
 
 const ProductList = () => {
@@ -39,38 +40,45 @@ const ProductList = () => {
 
 
     return (
-        <>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    my: '35px',
-                    justifyContent: 'space-evenly',
 
-                }}
+
+        <Grid item>
+
+
+            <Box sx={{
+
+                display: 'flex',
+                flexWrap: 'wrap',
+                my: '35px',
+                justifyContent: 'space-evenly'
+
+            }}
+
             >
                 {products ? (
                     (products.results || products).map((item) => {
+                        return <Box sx={{ margin: '15px' }}>
 
-                        return <ProductCard item={item} key={item.id} />
+                            <ProductCard item={item} key={item.id} />
+                        </Box>
                     })
                 ) : (
                     <h2>Loading...</h2>
                 )}
             </Box>
-            {products ? (
-                <Box sx={{
-                    textAlign: 'center'
-                }}>
 
-
-                    <Box my={3} display="flex" justifyContent="center">
-                        <Pagination count={count} page={page} onChange={handleChange} />
-                    </Box>
+            <Box sx={{
+                display: "flex",
+                justifyContent: 'center'
+            }}>
+                <Box my={3}>
+                    <Pagination count={count} page={page} onChange={handleChange} />
                 </Box>
-            ) : ('')
-            }
-        </>
+            </Box>
+
+
+        </Grid>
+
 
     );
 };

@@ -6,12 +6,11 @@ import SideBar from "../components/Crud/Sidebar";
 
 const CoursesPage = () => {
   return (
-    <Box p={5}>
-      <Grid container spacing={3}>
-        <SideBar />
-        <ProductList />
-      </Grid>
-    </Box>
+    <Grid sx={{ display: 'flex' }}>
+      <Grid item md={3}><SideBar /></Grid>
+      <Grid item md={8}><ProductList /></Grid>
+
+    </Grid>
   );
 };
 
