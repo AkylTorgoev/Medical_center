@@ -229,6 +229,7 @@ export default function AboutUs() {
                   </CardContent>
                 </Card>
               </Grid>
+              
             ))}
           </Grid>
         </Container>

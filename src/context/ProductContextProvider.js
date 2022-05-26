@@ -142,14 +142,27 @@ const reducer = (state = INIT_STATE, action) => {
           const fetchByParams = async(value)=>{
             if(value==='all'){
               getProducts()
-            }else{
+              
+            }else if(value === '5' || value === '7' || value === '10'){
+              const { data } = await axios(`http://34.88.61.26/api/v1/doctors/?experience_min=${value}`)
+              console.log(value);
+              console.log(data);
+              dispatch({
+                type: ACTIONS.GET_PRODUCTS,
+                payload: data
+              })
+
+            }
+            
+            else{
                 
-              const { data } = await axios(`${API}?speciality=${value}`)
+              const { data } = await axios(`http://34.88.61.26/api/v1/doctors/?speciality=${value}`)
             
               dispatch({
                 type: ACTIONS.GET_PRODUCTS,
                 payload: data
               })
+              
             }
               }
             

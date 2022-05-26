@@ -57,10 +57,10 @@ const ProductList = () => {
             >
                 {products ? (
                     (products.results || products).map((item) => {
-                        return <Box key={item.id} sx={{ margin: '15px' }}>
+                        return (<Box key={item.id} sx={{ margin: '15px' }}>
 
-                            <ProductCard item={item}  />
-                        </Box>
+                            <ProductCard item={item}/>
+                        </Box>)
                     })
                 ) : (
                     <h2>Loading...</h2>
