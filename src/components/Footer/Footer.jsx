@@ -44,15 +44,21 @@ const Footer = () => {
                             <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
                                 Center hours
                             </Link>
+                            <Box component='span' sx={{ color: 'white' }}>
+                                Mon-Sun: 9AM-6PM
+                            </Box>
                             <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
                                 Phone
                             </Link>
+                            <Box component='span' sx={{ color: 'white' }}>
+                                +996 999 777 555
+                            </Box>
                             <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
                                 Address
                             </Link>
-                            <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
-                                Store location
-                            </Link>
+                            <Box component='span' sx={{ color: 'white' }} >
+                                I. Ahunbaeva street 88, Bishkek, Kyrghyzstan
+                            </Box>
 
                         </Grid>
 
@@ -94,30 +100,6 @@ const Footer = () => {
                 </Container>
 
                 <Grid>
-                    <Grid container spacing={3} px={{ xs: 4, sm: 3 }} py={{ xs: 6, sm: 3 }}>
-                        <Grid item px={{ xs: 4, sm: 5 }} sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
-                                Center hours
-                            </Link>
-                            <Box component='span' sx={{ color: 'white' }}>
-                                Mon-Sun: 9AM-6PM
-                            </Box>
-                            <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
-                                Phone
-                            </Link>
-                            <Box component='span' sx={{ color: 'white' }}>
-                                +996 999 777 555
-                            </Box>
-                            <Link variant='body1' py={{ xs: 1 }} sx={{ color: '#9999A6' }} href="#" color="inherit" underline="hover">
-                                Address
-                            </Link>
-                            <Box component='span' sx={{ color: 'white' }} >
-                                I. Ahunbaeva street 88, Bishkek, Kyrghyzstan
-                            </Box>
-                        </Grid>
-
-
-                    </Grid>
 
 
                     <Box textAlign='center' sx={{ color: 'white', display: 'flex', justifyContent: 'space-around', flexDirection: { xs: 'column', sm: 'row' } }} variant='body2' pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>

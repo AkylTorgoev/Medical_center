@@ -12,6 +12,7 @@ import React from "react";
 
 const ContactUs = () => {
     return (
+
         <Box sx={{ py: "20vh", mt: "3px" }} className="bgImage1">
             <Box
                 p={5}

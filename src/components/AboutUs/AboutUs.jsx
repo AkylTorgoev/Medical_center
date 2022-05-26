@@ -213,7 +213,7 @@ export default function AboutUs() {
                 </Fade>
                 {/* End hero unit */}
 
-                <Fade up>
+                <Fade down>
                     <Container sx={{ py: 8 }} maxWidth="md">
                         <Grid container spacing={4}>
                             {cards.map((card) => (
