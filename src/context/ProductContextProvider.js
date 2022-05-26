@@ -144,7 +144,7 @@ const reducer = (state = INIT_STATE, action) => {
               getProducts()
             }else{
                 
-              const { data } = await axios(`${API}?speciality=${value}`)
+              const { data } = await axios(`http://34.88.61.26/api/v1/speciality/?speciality=${value}`)
             
               dispatch({
                 type: ACTIONS.GET_PRODUCTS,

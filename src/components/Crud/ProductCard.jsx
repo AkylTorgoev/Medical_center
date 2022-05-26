@@ -15,6 +15,7 @@ import { useAuth } from '../../context/AuthContextProvider';
 import { ADMIN } from '../../helpers/const';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Pulse from 'react-reveal/Pulse';
+import { Box } from '@mui/system';
 
 
 export default function ProductCard({ item }) {
@@ -30,7 +31,7 @@ export default function ProductCard({ item }) {
 
     return (
         <Pulse>
-            <Card sx={{ maxWidth: 300, justifyContent: 'center' }} elevation={24}>
+            <Card sx={{ maxWidth: 300, minHeight: 700, p: '10px', }} elevation={24}>
                 <CardMedia
                     component="img"
                     height="400"
@@ -38,23 +39,18 @@ export default function ProductCard({ item }) {
                     alt={item.name}
                     onClick={() => navigate(`/courses/${item.id}`)}
                 />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                <CardContent sx={{minHeight: 200}}>
+                    <Typography sx={{minHeight: 85}} gutterBottom variant="h4" component="div">
                         {item.name}
                     </Typography>
-
-                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'blue', fontWeight: '700' }}>
-                        {item.direction}
-                    </Typography>
-
-                    <Typography gutterBottom variant="h5" component="div" sx={{
+                    <Typography gutterBottom variant="body1" component="div" sx={{
                         color: 'blue', fontWeight: '700',
                     }}>
                         {item.speciality}
                     </Typography>
 
-                    <Typography gutterBottom variant="h5" component="div" sx={{
-                        color: 'blue', fontWeight: '700',
+                    <Typography gutterBottom variant="body2" component="div" sx={{
+                        color: 'inherit', fontWeight: '700',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         display: '-webkit-box',
@@ -80,19 +76,24 @@ export default function ProductCard({ item }) {
 
             </CardActions>
         ) : (
+            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
+
             <Button variant='contained' onClick={() => addProductToCart(item)}
             color={checkProductInCart(item.id) ? 'success' : 'primary'}
-
+            
             > Записаться на прием</Button>
-            )}
+            <Box mt={2} sx={{display: 'flex', alignItems: 'center'}}>
 
             <IconButton onClick={() => like(item.id)}>
                 <FavoriteIcon  
             color='error'
-
-                />
+            
+            />
             </IconButton>
             <Typography>{item.likes}</Typography>
+            </Box>
+            </Box>
+            )}
                     
 
 

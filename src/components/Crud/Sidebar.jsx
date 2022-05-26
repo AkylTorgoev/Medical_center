@@ -45,31 +45,83 @@ const SideBar = () => {
         />
 
 
-        <Grid>
+        <Grid 
+                sx={{mt: '10px'}}
+                >
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
 
             <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">Specialities</FormLabel>
+              <FormLabel id="demo-radio-buttons-group-label">Специальность</FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="все"
                 name="radio-buttons-group"
                 onChange={(e) => fetchByParams(e.target.value)}
+                sx={{mt: '10px'}}
               >
                 <FormControlLabel value="all" control={<Radio />} label="все" />
 
                 <FormControlLabel
-                  value="urolog"
+                  value="urologist"
                   control={<Radio />}
-                  label="Urolog"
+                  label="Уролог"
                 />
 
                 <FormControlLabel
-                  value="nevrology"
+                  value="ultrasound"
                   control={<Radio />}
-                  label="Nevrology"
+                  label="Врач-УЗИ"
                 />
-
+                <FormControlLabel
+                  value="traumatologist"
+                  control={<Radio />}
+                  label="Травматолог"
+                />
+                <FormControlLabel
+                  value="therapist"
+                  control={<Radio />}
+                  label="Терапевт"
+                />
+                <FormControlLabel
+                  value="surgeon"
+                  control={<Radio />}
+                  label="Хирург"
+                />
+                <FormControlLabel
+                  value="radiologist"
+                  control={<Radio />}
+                  label="Рентгенолог"
+                />
+                <FormControlLabel
+                  value="pediatrician"
+                  control={<Radio />}
+                  label="Педиатр"
+                />
+                <FormControlLabel
+                  value="ophthalmologist"
+                  control={<Radio />}
+                  label="Офтальмолог"
+                />
+                <FormControlLabel
+                  value="gynecologist"
+                  control={<Radio />}
+                  label="Гинеколог"
+                />
+                <FormControlLabel
+                  value="ctandmri"
+                  control={<Radio />}
+                  label="Врач КТ и МРТ"
+                />
+                <FormControlLabel
+                  value="cardiologist"
+                  control={<Radio />}
+                  label="Кардиолог"
+                />
+                <FormControlLabel
+                  value="allergologist"
+                  control={<Radio />}
+                  label="Аллерголог"
+                />
 
 
               </RadioGroup>
