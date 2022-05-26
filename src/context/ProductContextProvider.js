@@ -32,20 +32,16 @@ const reducer = (state = INIT_STATE, action) => {
             
             const ProductContextProvider = ({ children }) => {
                 
-                const location = useLocation()
-                const navigate = useNavigate()
+                // const location = useLocation()
+                // const navigate = useNavigate()
 
                 const [page, setPage] = useState(1)
                 const [state, dispatch] = useReducer(reducer, INIT_STATE)
 
                 const [count, setCount] = useState(1)
-                // console.log(page, count)
                
                 const getProducts = async () => {
-                    // let doc=location.pathname
-                    // let url=`${doc}?page=${page}`
-                    // navigate(url)
-                    // console.log(page);
+                    
                     const { data } = await axios(`${API}/?page=${page}`)
                     setCount(Math.ceil(data.count / 3))
                     dispatch({
