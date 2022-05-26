@@ -1,10 +1,10 @@
+import { Payment } from "@mui/icons-material";
 import React from "react";
-import PaymentForm from "../components/Payment/PaymentForm";
 
 const PaymentPage = () => {
   return (
     <div>
-      <PaymentForm />
+      <Payment />
     </div>
   );
 };

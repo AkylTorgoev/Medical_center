@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuth } from '../../context/AuthContextProvider';
 import { useNavigate } from 'react-router-dom';
 import { Navigation } from '@mui/icons-material';
+import { pink } from '@mui/material/colors';
 
 function Copyright(props) {
   return (
@@ -67,8 +68,8 @@ export default function Registration() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: pink[500]  }}>
+            <LockOutlinedIcon color='string'/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Registration
@@ -117,18 +118,6 @@ export default function Registration() {
             >
               Register
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
