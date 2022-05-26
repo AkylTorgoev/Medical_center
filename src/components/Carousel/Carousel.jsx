@@ -53,8 +53,8 @@ function Carousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: '100%', flexGrow: 2 }}>
-      <Paper
+    <Box sx={{ maxWidth: '60%', flexGrow: 2, py: '50px'}}>
+      {/* <Paper
         square
         elevation={0}
         sx={{
@@ -64,10 +64,11 @@ function Carousel() {
           height: 50,
           pl: 2,
           bgcolor: 'background.default',
+          color: 'black'
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
+      </Paper> */}
+        {/* <Typography>{images[activeStep].label}</Typography> */}
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -85,7 +86,8 @@ function Carousel() {
                   maxWidth: '100%',
                   overflow: 'hidden',
                   width: '100%',
-                  alignitems: 'center'
+                  alignitems: 'center',
+                  borderRadius: '10%'
                 }}
                 src={step.imgPath}
                 alt={step.label}

@@ -79,7 +79,7 @@ export default function Navbar() {
   
 
   return (
-    <Box mb={2} sx={{ flexGrow: 1, }}>
+    <Box mb={1} sx={{ flexGrow: 1, }}>
       <AppBar position="static" sx={{ bgcolor: 'white', color: 'rgb(59 131 115)', padding: '10px 0',  borderRadius: '0 0 14px 14px' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
           <Link to='/'>

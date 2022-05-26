@@ -48,10 +48,10 @@ const SideBar = () => {
         <Grid 
                 sx={{mt: '10px'}}
                 >
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: 'flex' }}>
 
             <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">Специальность</FormLabel>
+              <FormLabel id="demo-radio-buttons-group-label" sx={{color: '#1976d2'}} >Специальность</FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="все"
@@ -62,63 +62,63 @@ const SideBar = () => {
                 <FormControlLabel value="all" control={<Radio />} label="все" />
 
                 <FormControlLabel
-                  value="urologist"
+                  value="Уролог"
                   control={<Radio />}
                   label="Уролог"
                 />
 
                 <FormControlLabel
-                  value="ultrasound"
+                  value="Узист"
                   control={<Radio />}
                   label="Врач-УЗИ"
                 />
                 <FormControlLabel
-                  value="traumatologist"
+                  value="Травматолог"
                   control={<Radio />}
                   label="Травматолог"
                 />
                 <FormControlLabel
-                  value="therapist"
+                  value="Терапевт"
                   control={<Radio />}
                   label="Терапевт"
                 />
                 <FormControlLabel
-                  value="surgeon"
+                  value="Хирург"
                   control={<Radio />}
                   label="Хирург"
                 />
                 <FormControlLabel
-                  value="radiologist"
+                  value="Рентгенолог"
                   control={<Radio />}
                   label="Рентгенолог"
                 />
                 <FormControlLabel
-                  value="pediatrician"
+                  value="Педиатр"
                   control={<Radio />}
                   label="Педиатр"
                 />
                 <FormControlLabel
-                  value="ophthalmologist"
+                  value="Офтальмолог"
                   control={<Radio />}
                   label="Офтальмолог"
                 />
                 <FormControlLabel
-                  value="gynecologist"
+                  value="Гинеколог"
                   control={<Radio />}
                   label="Гинеколог"
                 />
                 <FormControlLabel
-                  value="ctandmri"
+                  value="КТиМРТ"
                   control={<Radio />}
                   label="Врач КТ и МРТ"
                 />
                 <FormControlLabel
-                  value="cardiologist"
+                  value="Кардиолог"
                   control={<Radio />}
                   label="Кардиолог"
                 />
                 <FormControlLabel
-                  value="allergologist"
+                  value="Аллерголог"
                   control={<Radio />}
                   label="Аллерголог"
                 />
@@ -126,6 +126,36 @@ const SideBar = () => {
 
               </RadioGroup>
             </FormControl>
+            <FormControl mt={100}>
+              <FormLabel  id="demo-radio-buttons-group-label" sx={{color: '#1976d2'}}>Стаж работы</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="все"
+                name="radio-buttons-group"
+                onChange={(e) => fetchByParams(e.target.value)}
+                sx={{mt: '10px'}}
+              >
+                <FormControlLabel value="all" control={<Radio />} label="все" />
+
+                <FormControlLabel
+                  value='5'
+                  control={<Radio />}
+                  label="от 2х лет"
+                />
+
+                <FormControlLabel
+                  value='7'
+                  control={<Radio />}
+                  label="от 5х лет"
+                />
+                 <FormControlLabel
+                  value='10'
+                  control={<Radio />}
+                  label="от 8х лет"
+                />
+                </RadioGroup>
+            </FormControl>
+
           </Box>
         </Grid>
 
